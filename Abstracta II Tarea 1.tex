@@ -1,0 +1,370 @@
+\documentclass[letter,twoside,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{fullpage}
+\usepackage{latexsym}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\title{Algebra Abstracta II: Tarea \#1}
+\newtheorem{lemma}{Lema}
+\author{Jonathan Andr\'es Ni\~no Cort\'es}
+\begin{document}
+\maketitle
+\textbf{Secci\'on 7.1} \textbf{8.} Describa el centro de los Cuaterniones Hamiltonianos reales $\mathbb{H}$ . Puebe que $\{a+bi |a,b \in \mathbb{R}\}$ es un subanillo de $\mathbb{H}$ que es un campo pero no esta contenido en el centro de $\mathbb{H}$.
+\begin{proof}
+Los elementos de $\mathbb{H}$ los representamos como $a+bi+cj+dk$.
+Vamos a demostrar que el centro esta conformado por los elementos de la forma $x \in \mathbb{H}$ con $x \in \mathbb{R}$. Obs\'ervese que $x*(a+bi+cj+dk)= (a+bi+cj+dk)*x=ax+bxi+cxj+dxk$.
+
+ Ahora obs\'ervese que si $b,c$ o $d$ son diferentes de 0, entonces $a+bi+cj+dk$  no conmuta con todos los elementos de $\mathbb{H}$. Supongamos que $b\not =0$, o $d\not =0$ y tomemos el elemento $j$.
+
+Por un lado,
+\begin{eqnarray}
+(a+bi+cj+dk)*j&=&-c-di+aj+bk \nonumber
+\end{eqnarray}
+Por otra parte,
+\begin{eqnarray}
+j*(a+bi+cj+dk)&=&-c+di+aj-bk \nonumber
+\end{eqnarray}
+
+Vemos que, por nuestra suposici\'on, no conmutan entre si.
+
+De igual manera, si suponemos que $c \not = 0$, entonces tomamos el elemento $i$.
+Vemos que,
+\begin{eqnarray}
+(a+bi+cj+dk)*i&=&-b+ai+dj-ck \nonumber
+\end{eqnarray}
+y
+\begin{eqnarray}
+i*(a+bi+cj+dk)&=&-b+ai-dj+ck \nonumber
+\end{eqnarray}
+
+Ahora probemos que $\{a+bi|a,b \in \mathbb{R}\}$ son un subanillo de $\mathbb{H}$ que es un campo.
+
+Primero probemos que es cerrado bajo substracci\'on
+
+\begin{equation}
+(a+bi)-(c+di) =(a-c)+(b-d)i \nonumber
+\end{equation}
+que esta en el conjunto porque los reales son cerrados bajo substracci\'on.
+Ahora probemos que es cerrado bajo multiplicaci\'on
+\begin{equation}
+(a+bi)*(c+di)=ac+adi+bci+bdi^2=(ac-bd)+(ad+bc)i \nonumber
+\end{equation}
+que esta en el conjunto porque los reales son cerrados bajo multiplicaci\'on y substracci\'on.
+\end{proof}
+Ahora probemos que es conmutativo
+\begin{eqnarray}
+(a+bi)*(c+di)&=&ac+adi+bci+bdi^2=(ac-bd)+(ad+bc)i\nonumber
+\\(c+di)*(a+bi)&=&ca+ai+dai+dbi^2=(ca-dc)+(da+cb)i\nonumber
+\end{eqnarray}
+Vemos que los dos resultados son iguales porque la multiplicaci\'on de los reales es conmutativa.
+Finalmente probemos que es un campo.
+Tomemos un elemento $a+bi$ diferente de 0. Por propiedades de los complejos sabemos que si es diferente de 0 entonces existe un inverso multiplicativo y se puede calcular como el conjungado dividido la norma al cuadrado.
+
+En efecto,
+\begin{equation}
+\frac{(a+bi)*(a-bi)}{a^2+b^2}=\frac{a^2-abi+abi-b^2i^2}{a^2+b^2}=\frac{a^2+b^2}{a^2+b^2}=1 \nonumber
+\end{equation}
+Por lo tanto, el conjunto es un campo. Finalmente el campo no pertenece al centro porque hay elementos que no conmutan con todos los elementos de $\mathbb{H}$. Cualquier $a+bi$ con $b\not =0$, no pertenece al centro como se demostro anteriormente.
+
+\newpage
+\textbf{Secci\'on 7.1} \textbf{13.} Un elemento $x \in \mathbb{R}$ se llama nilpotente si $x^m=0$ para alg\'un $m \in \mathbb{Z}^+$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+
+\item Muestre que si $n=a^kb$ para algunos enteros $a$ y $b$ entonces $\overline{ab}$ es un elemento nilpotente de $\mathbb{Z}/n\mathbb{Z}$.
+\begin{proof}
+
+Probamos que $\overline{ab}^k=\overline{0}$.
+
+%Que un elemento sea igual a $\overline{0}$ es equivalente a que sea divisible por n.
+Por un lado tenemos que $\overline{ab}^k=\overline{a}^k\overline{b}^k$, ya que el anillo es conmutativo. Adem\'as de la suposici\'on que $n=a^kb$ reduciendo m\'odulo $n$ obtenemos que $\overline{a}^k\overline{b}=\overline{0}$. Por lo tanto, $\overline{ab}^k=\overline{a}^k\overline{b}^k=\overline{0}*\overline{b}^{(k-1)}= \overline{0}$.
+\end{proof}
+\item Si $a \in \mathbb{Z}$ es un entero, muestra que el elemento $\overline{a} \in \mathbb{Z}/n\mathbb{Z}$ es nilpotente si y solo si cualquier primo divisor de $n$ es tambi\'en un divisor de $a$. En particular, determina los elementos nilpotentes de $\mathbb{Z}/72\mathbb{Z}$ explicitamente.
+\begin{proof}
+Por el teorema fundamental de la aritm\'etica podemos escribir $n=p_1^{\alpha_1}\cdots p_n^{\alpha_n}$ con $p_i$ primo y $\alpha_i>0$ para todo $i$ tal que $0\leq i \leq n$. Por la suposici\'on anterior podemos escribir $a=p_1^{\beta_1}\cdots p_n^{\beta_n}b$ con $b\in \mathbb{Z}$, $\beta_i>0$ para todo $i$ tal que $0\leq i \leq n$. Entonces podemos tomar $k=\text{max}(\{\alpha_i|0\leq i \leq n\})$. De esta manera $a^k=p_1^{\beta_1k}\cdots p_n^{\beta_nk}b^k$ y podemos ver que $n$ divide a $a^k$. Por lo tanto, $a$ es nilpotente.
+
+Para el converso obs\'ervese que si $a$ es nilpotente entonces $a^k=nb$ para alg\'un $b\in \mathbb{Z}$. Por lo tanto, $a^k=p_1^{\alpha_1}\cdots p_n^{\alpha_n}b$. De aqu\'i podemos concluir que cualquier primo que divide a $n$ tambi\'en divide a $a$. Pero esto implica que dentro de la expansi\'on en primos de $a^k$ estan incluidos estos primos y por lo tanto tambi\'en estan incluidos en la expansi\'on de $a$.
+
+Utilizando el resultado anterior concluimos que los elementos nilpotentes de $\mathbb{Z}/72\mathbb{Z}$ ($72=2^33^2$) son $\overline{0}, \overline{6}, \overline{12}, \overline{18}, \overline{24}, \overline{30}, \overline{36},\overline{42}, \overline{48}, \overline{54}, \overline{60}$ y $\overline{66}$.
+\end{proof}
+\item Sea $R$ el anillo de funciones del grupo no vac\'io X a un campo $F$. Pruebe que $R$ no contiene elementos nilpotentes diferentes a $\textbf{0}$.
+\begin{proof}
+Sabemos que los elementos nilpotentes tambi\'en son divisores de $\textbf{0}$. Tambi\'en sabemos que en este anillo los divisores de $\textbf{0}$, son aquellas funciones $f$ que mapean elementos de $X$ a 0, por que podemos definir una funci\'on $g$ tal que $g(x)=0$ si $f(x) \not = 0$ y $g(x)=1$ si $f(x)=0$, y claramente $fg=\textbf{0}$. Consideremos una funci\'on $f$ dentro del conjunto de divisores de $\textbf{0}$ diferentes a $\textbf{0}$. Por lo tanto debe haber un $x \in X$ tal que $f(x)\not = 0$. Notese que $f(x)$ es una unidad porque $F$ es un campo y $f(x)$ es diferente de 0. Para que esta funci\'on sea nilpotente debe existir un m\'inimo $k>0$ tal que $f(x)^k=0$. Si suponemos que este $k$ existe entonces llegamos a una contradicci\'on porque entonces $f(x)*f(x)^{k-1}=0$ y por lo tanto $f(x)$ seria un divisor de 0, lo cual es una contradicci\'on ya que $f(x)$ es una unidad.
+\end{proof}
+\end{enumerate}
+\newpage
+\mbox{ }
+\newpage
+\textbf{Secci\'on 7.2} \textbf{3.} Defina el conjunto $R[[x]]$ de \textit{series de potencias formales} en el indeterminado $x$ con coeficientes de $R$ como todas las sumas infinitas formales 
+\begin{equation}
+\sum_{n=0}^{\infty} a_nx^n = a_0+a_1x+a_2x^2+a_3x^3+ \cdots. \nonumber
+\end{equation}
+Defina la adici\'on y multiplicaci\'on de la misma manera que las series de potencias con coeficiente reales o complejos, i.e., adici\'on y multiplicaci\'on polinomial extendida a series de potencias como si fueran "polinomios de infinito grado".
+\begin{equation}
+\sum_{n=0}^{\infty}a_nx^n + \sum_{n=0}^{\infty}b_nx^n = \sum_{n=0}^{\infty}(a_n+b_n)x^n\nonumber
+\nonumber
+\end{equation}
+
+\begin{equation}
+\sum_{n=0}^{\infty}a_nx^n \times \sum_{n=0}^{\infty}b_nx^n = \sum_{n=0}^{\infty}(\sum_{k=0}^{n}a_kb_{n-k})x^n\nonumber
+\nonumber
+\end{equation}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+\item Pruebe que $R[[x]]$ es un anillo conmutativo con 1.
+\begin{proof}
+Primero demostramos que $R[[x]]$ con la operaci\'on $+$ es un grupo conmutativo.
+\begin{itemize}
+\item[\underline{Asociatividad}:]
+\begin{eqnarray}
+(\sum_{n=0}^{\infty}a_nx^n + \sum_{n=0}^{\infty}b_nx^n) + \sum_{n=0}^{\infty}c_nx^n &=& \sum_{n=0}^{\infty}(a_n+b_n)x^n + \sum_{n=0}^{\infty}c_nx^n \nonumber
+\\&=& \sum_{n=0}^{\infty}((a_n+b_n)+c_n)x^n\nonumber
+\\& &\text{ (por asociatividad de + en $R$)}\nonumber
+\\&=& \sum_{n=0}^{\infty}(a_n+(b_n+c_n))x^n\nonumber
+\\&=& \sum_{n=0}^{\infty}a_nx^n + \sum_{n=0}^{\infty}(b_n+c_n)x^n \nonumber
+\\&=& \sum_{n=0}^{\infty}a_nx^n + (\sum_{n=0}^{\infty}b_nx^n+  \sum_{n=0}^{\infty}c_nx^n) \nonumber
+\end{eqnarray}
+\item[\underline{Conmutatividad}:]
+\begin{eqnarray}
+\sum_{n=0}^{\infty}a_nx^n + \sum_{n=0}^{\infty}b_nx^n &=& \sum_{n=0}^{\infty}(a_n+b_n)x^n \nonumber
+\\& & \text{(por conmutatividad de + en $R$)} \nonumber
+\\&=& \sum_{n=0}^{\infty}(b_n+a_n)x^n \nonumber
+\\&=& \sum_{n=0}^{\infty}b_nx^n+\sum_{n=0}^{\infty}a_nx^n  \nonumber
+\end{eqnarray}
+\item[\underline{Identidad aditiva}:]
+Sea $\theta_i=0, \forall i \geq 0$. Entonces la serie $\sum \theta_nx^n$ es la identidad.
+\begin{eqnarray}
+\sum_{n=0}^{\infty}a_nx^n + \sum_{n=0}^{\infty}\theta_nx^n &=& \sum_{n=0}^{\infty}(a_n+\theta_n)x^n \nonumber
+\\&=&\sum_{n=0}^{\infty}(a_n+0)x^n\nonumber
+\\&=&\sum_{n=0}^{\infty}a_nx^n\nonumber
+\end{eqnarray}
+$\sum \theta_nx^n+\sum a_nx^n=\sum a_nx^n$ por la conmutatividad demostrada anteriormente.
+\item[\underline{Inverso}:] Sea $\sum a_nx^n$ una serie y tomese la serie $\sum -a_nx^n$. Se puede observar que la suma de estas series es igual a la serie $\sum \theta_nx^n$.
+\end{itemize}
+Ahora vamos a demostrar que la multiplicaci\'on es asociativa.
+
+Observaci\'on: La multiplicaci\'on se puede definir equivalentemente como
+\begin{eqnarray}
+\sum_{n=0}^\infty a_nx^n \times \sum_{n=0}^\infty b_nx^n = \sum_{n=0}^\infty (\sum_{i,j \in \mathbb{N},i+j=n} a_ib_j)x^n \nonumber
+\end{eqnarray}
+Utilizando esta definici\'on podemos ver que
+\begin{eqnarray}
+(\sum_{n=0}^{\infty}a_nx^n \times \sum_{n=0}^{\infty}b_nx^n) \times  \sum_{n=0}^{\infty}c_nx^n&=& \sum_{n=0}^{\infty}(\sum_{i+j=n}a_ib_j)x^n \times  \sum_{n=0}^{\infty}c_nx^n\nonumber
+\\&=&\sum_{n=0}^{\infty}(\sum_{m+k=n}(\sum_{i+j=m}a_ib_{j})c_{k})x^n
+\nonumber
+\\&=&\sum_{n=0}^{\infty}(\sum_{i+j+k=n}a_ib_{j}c_{k})x^n
+\nonumber
+\end{eqnarray}
+
+Por otra parte
+
+\begin{eqnarray}
+\sum_{n=0}^{\infty}a_nx^n \times (\sum_{n=0}^{\infty}b_nx^n \times  \sum_{n=0}^{\infty}c_nx^n)&=& \sum_{n=0}^{\infty}a_nx^n \times \sum_{n=0}^{\infty}(\sum_{j+k=n}b_jc_{k})x^n \nonumber
+\\&=&\sum_{n=0}^{\infty}(\sum_{i+m=n}(a_i\sum_{j+k=m}b_jc_{k}))x^n \nonumber
+\\&=&\sum_{n=0}^{\infty}(\sum_{i+j+k=n}(a_ib_jc_{k})x^n
+\nonumber
+\end{eqnarray}
+Vemos que son iguales.
+\item[\underline{Conmutatividad:}]
+\begin{eqnarray}
+\sum_{n=0}^{\infty}a_nx^n \times \sum_{n=0}^{\infty}b_nx^n &=& \sum_{n=0}^{\infty}(\sum_{i+j=n}a_ib_{j})x^n \nonumber
+\end{eqnarray}
+Por otro lado vemos que
+\begin{eqnarray}
+\sum_{n=0}^{\infty}b_nx^n \times \sum_{n=0}^{\infty}a_nx^n &=& \sum_{n=0}^{\infty}(\sum_{i+j=n}b_ia_{j})x^n \nonumber
+\end{eqnarray}
+Obs\'ervese que $\sum_{i+j=n}a_ib_j=\sum_{i+j=n}a_jb_i$ por un simple reordenamiento de t\'erminos y a su vez $\sum_{i+j=n}a_jb_i=\sum_{i+j=n}b_ia_j$ porque el anillo $R$ es conmutativo. Luego las dos series conmutan.
+\item[\underline{Identidad multiplicativa:}]
+La serie $1=\sum_{n=0}^{\infty}e_nx^n$ donde el t\'ermino $e_0=1$ y cuyos dem\'as t\'erminos son 0, es la identidad multiplicativa.
+\item[\underline{Distributividad:}]
+\begin{eqnarray}
+\sum_{n=0}^{\infty}a_nx^n \times (\sum_{n=0}^{\infty}b_nx^n+\sum_{n=0}^{\infty}c_nx^n) &=& \sum_{n=0}^{\infty}a_nx^n \times \sum_{n=0}^{\infty}(b_n+c_{n})x^n \nonumber
+\\&=& \sum_{n=0}^{\infty}(\sum_{i+j=n}a_i(b_j+c_{j}))x^n \nonumber
+\\&=& \sum_{n=0}^{\infty}(\sum_{i+j=n}a_ib_j+a_ic_{j})x^n \nonumber
+\\&=& \sum_{n=0}^{\infty}(\sum_{i+j=n}a_ib_j+\sum_{i+j=n}a_ic_{j})x^n \nonumber
+\\&=& \sum_{n=0}^{\infty}(\sum_{i+j=n}a_ib_j)x^n+\sum_{n=0}^{\infty}(\sum_{i+j=n}a_ic_{j})x^n \nonumber
+\\&=& \sum_{n=0}^{\infty}a_nx^n\times \sum_{n=0}^\infty b_nx^n+\sum_{n=0}^{\infty}a_nx^n\times \sum_{n=0}^\infty c_nx^n \nonumber
+\end{eqnarray}
+
+Por otra parte $\sum_{n=0}^{\infty}a_nx^n \times \sum_{n=0}^{\infty}e_nx^n= \sum_{n=0}^{\infty}a_nx^n$ por la conmutatividad de la multiplicaci\'on demostrada anteriormente.
+\end{proof}
+\item Muestre que $1-x$ es una unidad en $R[[x]]$ con inverso $1+x+x^2+ \cdots$.
+\begin{proof}
+Se puede observar que la multiplicaci\'on da como resultado
+\begin{eqnarray}
+(1-x)\times \sum_{n=0}^{\infty} x^n=1+\sum_{n=1}^{\infty}(1*x^{n}-x*x^{n-1})=1+\sum_{n=1}^{\infty}(x^{n}-x^n)= 1\nonumber
+\end{eqnarray}
+\end{proof}
+\item Pruebe que $\sum_{n=0}^{\infty} a_nx^n$ es una unidad en $R[[x]]$ si y solo si $a_0$ es una unidad en $R$.
+\begin{proof}
+Tomemos una serie $\sum_{n=0}^{\infty} a_nx^n$ y supongamos que existe $\sum_{n=0}^{\infty} b_nx^n$ tal que
+\begin{eqnarray}
+\sum_{n=0}^{\infty} a_nx^n \times \sum_{n=0}^{\infty}b_nx^n=\sum_{n=0}^{\infty}(\sum_{k=0}^{n}a_kb_{n-k})x^n = 1\nonumber. 
+\end{eqnarray}
+
+En primer lugar se debe de cumplir que el coeficiente $c_0$ de la serie producto sea 1. Vemos que $c_0=a_0b_0$ por lo que esto solo se puede cumplir si $a_0$ es una unidad.
+
+Ahora supongamos que $a_0$ es una unidad y por lo tanto existe $b_0$ tal que $c_0=a_0b_0=1$.  Ahora se deben encontrar el resto de los $b_n$'s de tal manera que $\sum_{k=0}^{n} a_kb_{n-k}=0$. Entonces definimos $b_n$ recursivamente como $-b_0\sum_{j=1}^{n} a_kb_{n-k}$. De tal manera que para $n>0$
+\begin{eqnarray}
+\sum_{k=0}^{n}a_kb_{n-k}&=&a_0b_n+\sum_{k=1}^{n}a_kb_{n-k} \nonumber
+\\ &=& a_0(-b_0\sum_{j=1}^{n} a_kb_{n-k})+\sum_{k=1}^{n}a_kb_{n-k} \nonumber
+\\&=& a_0b_0(-\sum_{j=1}^{n} a_kb_{n-k})+\sum_{k=1}^{n}a_kb_{n-k} \nonumber
+\\&=& (-\sum_{j=1}^{n} a_kb_{n-k})+\sum_{k=1}^{n}a_kb_{n-k} \nonumber
+\\&=&0 \nonumber
+\end{eqnarray}
+
+\end{proof}
+\end{enumerate}
+\newpage
+
+\textbf{Secci\'on 7.2} \textbf{3.}
+Pruebe que el centro del anillo $M_n(R)$ es el conjunto de matrices escalares.
+
+\begin{proof}
+Las matrices escalares son aquellas de la forma $M=\lambda I$, con $\lambda \in R$.
+
+Por un lado si $M$ es una matriz escalar entonces pertenece al centro porque tomando cualquier matriz $A \in M(R)$
+
+
+\begin{equation}
+MA=\lambda IA = \lambda A I=A \lambda I =AM \nonumber
+\end{equation}
+
+Ahora probemos que si $M$ no es escalar entonces no pertenece al centro. Por ejemplo, supongamos primero que no es una matriz diagonal, entonces existe una entrada $a_{ij}$ tal que $i \not = j$, y $a_{ij} \not = 0$. Entonces tomemos la matriz $E_{ji}$ cuyas entradas son 0, exceptuando la entrada $ji$ que es 1. Veamos que estas matrices no conmutan entre si.
+
+La entrada $(j,j)$ de la matriz $A=E_{ji}M$ es igual a
+\begin{equation}
+\sum_{k=0}^n e_{jk}m_{kj}=e_{ji}m_{ij}=m_{ij} \nonumber
+\end{equation} 
+
+Por otra parte la entrada $(j,j)$ de la matriz $B=ME_{ji}$ es
+\begin{equation}
+\sum_{k=0}^n m_{jk}e_{kj}= 0 \nonumber
+\end{equation}
+porque ning\'un $e_kj$ puede ser igual a $e_{ji}$ debido a nuestra suposici\'on que $i \not  = j$
+
+Ahora supongamos que $M$ es una matriz diagonal pero que existen $i,j$ tales que $m_{ii}\not = m_{jj}$ y tomemos la matriz $E_{ij}$ tal que todas sun entradas son 0 menos la entrada $ij$.
+
+La entrada $(i,j)$ de la matriz $A=E_{ij}M$ es igual a
+\begin{equation}
+\sum_{k=0}^n e_{ik}m_{kj}=e_{ij}m{jj}= m{jj}\nonumber
+\end{equation} 
+
+Por otra parte la entrada $(i,j)$ de la matriz $B=ME_{ji}$ es
+\begin{equation}
+\sum_{k=0}^n m_{ik}e_{kj}= m_{ii}e_{ij}=m_{ii} \nonumber
+\end{equation}
+Y vemos que son diferentes por nuestra suposici\'on.
+\end{proof}
+\newpage
+\mbox{ }
+\newpage
+\textbf{Secci\'on 7.3} \textbf{10.} Decida cual de los siguientes son ideales del anillo $\mathbb{Z}[x]$:
+\begin{enumerate}[label=\textbf{(\alph*)}]
+\item el conjunto de todos los polinomios cuyo t\'ermino constante es un m\'ultiplo de 3
+\begin{proof}
+Como el anillo es conmutativo solo es necesario verificar que la multiplicaci\'on es cerrada por izquierda o por derecha, no por las dos.
+Este si es un ideal. El conjunto es un subgrupo aditivo porque la resta de dos poliminos cuyo t\'ermino constante es m\'ultiplo de 3 da como resultado un elemento cuyo t\'ermino constante es tambi\'en m\'ultiplo de 3.
+
+Si tomamos cualquier polinomio y cualquier elemento en el ideal vemos que la multiplicacion tambi\'en cae en el ideal porque el t\'ermino constante tambien seria un multiplo de 3.
+\end{proof}
+\item el conjunto de todos los polinomios cuyo coeficiente de $x^2$ es un m\'ultiplo de 3
+\begin{proof}
+Este no es un ideal. Tomese por ejemplo el polinomio $(3x^2+2x+1)$ en el ideal, al multiplicarlo por $x+1$, obtenemos $3x^3+5x^2+3x+1$, que no esta en el ideal.
+\end{proof}
+\item el conjunto de todos los polinomios cuyo t\'ermino constante, coeficiente de $x$ y coeficiente de $x^2$ son cero
+\begin{proof}
+Este es un ideal. Es un subgrupo aditivo porque la resta de cualquier polinomio de esta forma vuelve a dar un polinomio de esta forma. Adem\'as si multiplicamos cualquier polinomio $\sum_{i=3}^n a_nx^n$ por un polinomio $\sum_{i=0}^n b_nx^n$. Obs\'ervese que $a_0b_0=0, a_1b_0+a_0b_0=0, a_2b_0+a_1b_1+a_0b_2=0$.
+Vemos que la multiplicaci\'on da de nuevo un elemento en el ideal. Este puede verse como el ideal generado por $x^3$
+\end{proof}
+\item $\mathbb{Z}[x^2]$ (i.e., los polinomios en los cuales solamente las potencias pares de $x$ aparecen)
+\begin{proof}
+No es un ideal, tome por ejemplo $x^2$ en el ideal y el polinomio $x$. $x*x^2=x^3$ no est\'a en el ideal.
+\end{proof}
+\item el conjunto de los polinomios cuyos coeficientes suman a cero
+\begin{proof}
+Si es un ideal. Podemos probar esto utilizando el homomorfismo de evaluaci\'on en 1 $\phi(P(x))=P(1)$. Este conjunto seria el kernel de este homomofismo. (Idea propuesta por Rafael Mantilla).
+\end{proof}
+\item el conjunto de los polinomios $p(x)$ tal que $p'(0)=0$, donde $p'(x)$ es la primera derivada usual de $p(x)$ con respecto a $x$.
+\begin{proof}
+No es un ideal. Por ejemplo, el polinomio 1 esta en el conjunto porque su derivada siempre es 0. Pero $1*x$ igual a $x$ no esta en el conjunto pues su derivada evaluada en 0 es 1.
+\end{proof}
+\end{enumerate}
+\newpage
+\mbox{ }
+\newpage
+\textbf{Secci\'on 7.3} \textbf{13.} Pruebe que el anillo $M_2(\mathbb{R})$ contiene un subanillo que es isom\'orfico a $\mathbb{C}$.
+\begin{proof}
+Tome $A$ el conjunto de todas las matrices de la forma
+\[ \left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right)\] 
+con $a,b \in \mathbb{R}$
+Sea $\phi:A \mapsto \mathbb{C}$ la funci\'on definida como 
+\[ \left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right) \mapsto a+ib\]
+Vamos a demostrar que esta funci\'on es un homorfismo biyectivo de anillos.
+
+La funci\'on es trivial por la buena definici\'on de esta representaci\'on de los reales. Es inyectiva pues si $(a,b) \not = (c,d)$ entonces $a+ib \not = c+id$. Y es sobreyectiva porque para cualquier $a+ib \in \mathbb{C}$ existe una preimagen respectiva $(a,b)$.
+
+Por otro lado para probar que preserva la suma tomemos
+\[ \phi\left(\left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right)+\left( \begin{array}{cc}
+c & -d \\
+d & c \end{array} \right)\right) = \phi\left(\left( \begin{array}{cc}
+a+c & -b-d \\
+b+d & a+c \end{array} \right)\right)\]
+\[ \phi\left(\left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right)+\left( \begin{array}{cc}
+c & -d \\
+d & c \end{array} \right)\right) = (a+c)+(b+d)i\]
+\[ \phi\left(\left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right)+\left( \begin{array}{cc}
+c & -d \\
+d & c \end{array} \right)\right) = (a+bi)+(c+di)\]
+\[ \phi\left(\left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right)+\left( \begin{array}{cc}
+c & -d \\
+d & c \end{array} \right)\right) = \phi\left(\left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right)\right)+\phi\left(\left( \begin{array}{cc}
+c & -d \\
+d & c \end{array} \right)\right)\]
+
+Ahora probemos que preserva la multiplicaci\'on
+\[ \phi\left(\left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right)\left( \begin{array}{cc}
+c & -d \\
+d & c \end{array} \right)\right) = \phi\left(\left( \begin{array}{cc}
+ac-bd & -ad-bc \\
+bc+ad & -bd+ac \end{array} \right)\right)\]
+\[ \phi\left(\left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right)\left( \begin{array}{cc}
+c & -d \\
+d & c \end{array} \right)\right) = (ac-bd)+(bc+ad)i\]
+\[ \phi\left(\left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right)\left( \begin{array}{cc}
+c & -d \\
+d & c \end{array} \right)\right) = (a+bi)*(c+di)\]
+\[ \phi\left(\left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right)\left( \begin{array}{cc}
+c & -d \\
+d & c \end{array} \right)\right) = \phi\left(\left( \begin{array}{cc}
+a & -b \\
+b & a \end{array} \right)\right)\phi\left(\left( \begin{array}{cc}
+c & -d \\
+d & c \end{array} \right)\right)\]
+
+Concluimos que $A$ es isomorfo a $\mathbb{C}$, por lo tanto $A$ es un subanillo de $M_2(R)$.
+\end{proof}
+\end{document}

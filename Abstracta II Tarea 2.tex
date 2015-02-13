@@ -1,0 +1,158 @@
+\documentclass[letter,twoside,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{fullpage}
+\usepackage{latexsym}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\title{Algebra Abstracta II: Tarea \#2}
+\newtheorem{lemma}{Lema}
+\author{Jonathan Andr\'es Ni\~no Cort\'es}
+\begin{document}
+\maketitle
+\textbf{Secci\'on 7.4} \textbf{8.} Sea $R$ un dominio integral. Pruebe que $(a) = (b)$ para algunos elementos $a,b \in R$ si y solo si $a = ub$ para alguna unidad $u$ de $R$.
+\begin{proof}
+Vamos a demostrar primero un lema util para la demostraci\'on
+\begin{lemma}
+Sea $R$ un dominio integral y sea $a \not = 0$. Entonces $ax=a$ implica que $x=1$.
+\begin{proof}
+$ax=a$ implica que $ax-a=0$. Por distributividad tenemos que $a(x-1)=0$. Entonces como $R$ es un dominio integral tenemos que no hay divisores de 0. Es decir, que $a = 0$ o $x-1=0$. Entonces por nuestras suposiciones $x-1=0$, es decir, $x=1$.
+\end{proof} 
+\end{lemma}
+
+$\leftarrow$ Sea $x \in (a)$, entonces $x=rb$ para algun $r \in R$. Pero por otra parte tenemos $a=ub$, por lo que $x=rub$. Esto implica que $x \in (b)$. La otra contenencia es an\'aloga tomando $b=u^{-1}a$, que es posible ya que $u$ es una unidad.
+
+$\rightarrow$ Si $a=0$, entonces $(a)=\{0\}$ y por lo tanto $b=0$. Aqui claramente tenemos que $0*1=0$, por lo que en este caso se cumple. El caso $b=0$ es an\'alogo.
+Entonces supongase que $a$ y $b$ son distintos de cero. $(a)=(b)$ implica que $a=rb$ y $b=r'a$ para algunos $r,r' \in R$. Sustituyendo una ecuaci\'on en la otra obtenemos que $a=rr'a$. Por el Lema 1, entonces tenemos que $rr'=1$, es decir que $r$ es unidad.   
+\end{proof}
+\newpage
+\mbox{ }
+\newpage
+\textbf{Secci\'on 7.4} \textbf{11.} Asuma que $R$ es conmutativo. Sean $I$ y $J$ ideales de $R$ y asuma que $P$ es un ideal primo de $R$ que contiene a $IJ$ (por ejemplo, si $P$ contiene a $I \cap J$). Pruebe que $P$ contiene a $I$ o a $J$.
+\begin{proof}
+Supongamos que $I \not \subseteq P$. Entonces existe un $i \in I$ tal que $i \not \in P$. Pero para todo $j \in J$ tenemos que $ij \in IJ$ y por lo tanto pertenecen a $P$. Luego como $P$ es primo tenemos que o $i \in P$ o $j \in P$ y por nuestra suposici\'on concluimos que $j \in P$. Concluimos que $J \subseteq P$.  
+\end{proof}
+\newpage
+\mbox{ }
+\newpage
+\textbf{Secci\'on 7.4} \textbf{13.} Sea  $\phi: R \mapsto S$ un homomorfismo de anillos conmutativos.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+\item Pruebe que si $P$ es un ideal primo de $S$ entonces o $\phi^{-1}(P)=R$ o $\phi^{-1}(P)$ es un ideal primo de $R$. Aplique esto al caso especial cuando $R$ es un subanillo de $S$ y  $\phi$ es el homomorfismo de inclusi\'on para deducir que si $P$ es un ideal primo de $S$ entonces $P \cap R$ es ya sea $R$ o un primo ideal de $R$.
+\begin{proof}
+Vamos a demostrar que si $ab \in \phi^{-1}(P)$ entonces o $a \in \phi^{-1}(P)$ o $b \in \phi^{-1}(P)$. Observese que tenemos dos casos que $\phi^{-1}(P)=R$ o que $\phi^{-1}(P)\subsetneq R$. Si se da el segundo caso concluimos que $\phi^{-1}(P)$ es primo.  
+
+ Tomese $ab \in \phi^{-1}(P)$. Entonces si miramos la imagen en el homomorfismo, vemos que $\phi(ab)=\phi(a)\phi(b) \in P$. Como $p$ es primo entonces tenemos o que $\phi(a)\in P$ o $\phi(b)\in P$. Pero esto a su vez implica que $\phi^{-1}(\phi(a)) \subset \phi^{-1}(P)$ o $\phi^{-1}(\phi(b)) \subset \phi^{-1}(\phi(b))$. Adem\'as tenemos que $a \in \phi^{-1}(\phi(a))$ y respectivamente para $b$ por lo que concluimos que $\phi^{-1}(P)$ es primo o es todo $R$.
+ 
+ Supongamos que $R$ es un subanillo de $S$ y $\phi$ es el homomorfismo de inclusión y tomemos $P$ un ideal primo de $S$. Entonces por definición, $\phi^{-1}(P)$ es $P \cap R$. Por lo demostrado anteriormente $P \cap R$ es primo en $R$ o es todo $R$.
+ \end{proof}
+\item Pruebe que si $M$ es un ideal maximal de $S$ y $\phi$ es sobreyectivo entonces $\phi^{-1}(M)$ es un ideal maximal de $R$. De un ejemplo para mostrar que este no es necesariamente el caso si $\phi$ no es sobreyectivo.
+\begin{proof}
+Tenemos que $S/M$ es un campo. Entonces tomamos el homomorfismo natural $\pi:S \mapsto S/M$. Este homomorfismo es sobreyectivo. Entonces la composici\'on $\pi \circ \phi $ es un homomorfismo sobreyectivo de $R$ a $S/M$. Adem\'as tenemos que el kernel de esta composici\'on es $\phi^{-1}(M)$. Por el primer teorema del isomorfismo tengo que $R/ker \pi \circ \phi$ es isomorfo a $S/M$ por lo que tambi\'en seria un campo y por lo tanto $\phi^{-1}(M)$ es maximal. 
+
+El siguiente ejemplo fue propuesto por Santiago Cortes y Nicolas Jaramillo
+ 
+ Para demostrar que si $\phi$ no es sobreyectivo entonces $\phi^{-1}(M)$ no es necesariamente maximal. Tomemos $\phi:\mathbb{Z} \mapsto \mathbb{Q}$ el homomorfismo dado por inclusi\'on. Como $\mathbb{Q}$ es un campo, tenemos que los \'unicos ideales son $\mathbb{Q}$ o $\{0\}$. Y por lo tanto el \'unico ideal maximal es $\{0\}$. Pero tenemos que $\phi^{-1}(\{0\})=\{0\}$. Y claramente en $\mathbb{Z}$, $\{0\}$ no es maximal, pues cualquier ideal de la forma $n\mathbb{Z}$ lo contiene    
+\end{proof}
+\end{enumerate}
+\newpage
+\mbox{ }
+\newpage
+\textbf{Secci\'on 7.4} \textbf{30.} Sea $I$ un ideal del anillo conmutativo $R$ y defina
+\begin{equation}
+\text{rad }I=\{r  \in R\:|\:r^n \in I\text{ para alg\'un } n \in \mathbb{Z}^+ \} \nonumber
+\end{equation}
+
+llamado el radical de $I$. Pruebe que rad $I$ es un ideal que contiene a $I$ y que (rad $I$)/$I$ es el nilradical del anillo cociente $R/I$, i.e., (rad $I)/I=\mathfrak{R}(R/I)$.
+\begin{proof}
+Claramente $I \subseteq$ rad $I$ porque cualquier $i \in I$ se puede expresar como $i^{1}$. Ahora que rad $I$ sea un ideal se puede demostrar por medio de la f\'ormula binomial. Sean $r,s \in $ rad $I$. Entonces existen $n,m \in \mathbb{Z}^+$ tales que $r^n=s^m=0$. Ahora tomemos $(r-s)^{n+m}$. Por la formula binomial
+\begin{equation}
+(r-s)^{n+m}=\sum_{i=0}^{n+m} {n \choose i}r^i(-s)^{n+m-i} \nonumber
+\end{equation}
+
+Ahora obs\'ervese que para todo $i$, $0\leq i \leq n+m$. se tiene que $i\geq n$ o $n+m-i\geq m$. Por lo tanto, todos los t\'erminos pertenecen a $I$. Por otra parte, tomese $r \in $ rad $I$ y $s \in R$, entonces si $r^n \in I$, tenemos que $(rs)^n =r^ns^n \in I$ por lo que concluimos que rad $I$ es un ideal.
+ 
+Tomemos $\pi$ el homomorfismo natural de $R$ a $R/I$ y veamos que es $\pi($rad $I)$. Tomemos un $r\in$ rad $I$, entonces tenemos que $r^n \in I$ para alg\'un $n \in \mathbb{Z}^+$. Entonces tenemos que $\pi(r^n)=0$. Y como $\pi$ es un homomorfismo $\pi(r)^n=0$. Es decir que todo $\pi(r)$ es un elemento nilpotente de $R/I$ por lo que concluimos que $\pi($rad $I)\mathfrak{R}(R/I)$. Para mostrar la otra contenencia tomemos un elemento $s \in \mathfrak{R}(R/I)$. Por definici\'on tenemos que $s^n = 0$ para algun $n \in \mathbb{Z}^+$. Ahora si tomamos $\pi^{-1}(s)$, concluimos que para cualquier $s' \in \pi^{-1}(s)$ se cumple que $s'^n \in I$. Luego $\pi^{-1}(s) \in \subseteq $ rad $I$. Y por lo tanto $\pi(pi^{-1}(s))=s \in \pi($rad $I$). Esto demuestra que $\mathfrak{R}(R/I)=\pi($rad $I)$ A su vez esto demuestra por el teorema de la correspondencia que rad $I$ es un ideal pues $\mathfrak{R}(R/I)$ es un ideal de $(R/I)$ y por lo tanto podemos expresar $\pi($rad $I)=$ (rad $I)/I$. (Otra forma de demostrar que rad $I$ es un ideal).
+\end{proof}
+\newpage
+\mbox{ }
+\newpage
+\textbf{Secci\'on 7.4} \textbf{32.} Sea $I$ un ideal de un anillo conmutativo $R$ y defina
+
+\begin{center}
+Jac $I$ como la intersecci\'on de todos los ideales maximales de $R$ que contienen a $I$
+\end{center}
+
+donde la convenci\'on es que Jac $R=R$. (Si $I$ es el ideal zero, Jac 0 se llama el \textit{radical de Jacobson}) del anillo $R$, de tal manera que Jac $I$ es la preimagen en $R$ del radical de Jacobson de $R/I.)$
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+\item Pruebe que Jac $I$ es un ideal de $R$ que contiene a $I$.
+\begin{proof}
+Por la definici\'on de Jac $I$ sabemos que es una intersecci\'on de ideales que contienen a $I$. Por un teorema sabemos que la intersecci\'on de ideales es un ideal. Y adem\'as como todos los ideales contienen a $R$ la intersecci\'on contiene a $R$.
+\end{proof}
+\item Pruebe que rad $I \subseteq$ Jac $I$, donde rad $I$ es el radical de $I$ definido en el Ejercicio 30.
+\begin{proof}
+Vamos a demostrar que rad $I \subseteq \bigcap_{\alpha \in I} P_{\alpha}$ donde $\{P_{\alpha}\}$ son los ideales primos de $R$ que contienen a Jac $I$. A su vez este conjunto esta contenido en Jac $I$, pues los ideales maximales que contienen a $I$ tambi\'en son primos. Ahora tomese $r\in$ rac $I$. Por definici\'on, existe $n \in \mathbb{Z}^+$ tal que $r^n \in I$. Si $n=1$ entonces $r \in I \subseteq \bigcap_{\alpha \in I} P_\alpha$ para todo $P_\alpha$. Ahora si $n>1$, tenemos que $r^n$ pertenece a $P_\alpha$ para todo $P_\alpha$. Por la propiedad de ideales primos tenemos que $r \in P_{\alpha}$ o que $r^{n-1} \in P_{\alpha}$. Si suponemos que el primero no se cumple entonces podemos repetir el proceso para $r^{n-1}$ y si lo hacemos $n-2$ llegaremos a $r^2$ donde tendremos que concluir que $r \in P_{\alpha}$. Finalmente esta en todos los $P_{\alpha}$ est\'a en la intersecci\'on. Esto demuestra que rad $I$ esta contenido en jac $I$.
+\end{proof}
+
+\item Sea $n>1$ un entero. Describa Jac $n\mathbb{Z}$ en t\'erminos de la factorizaci\'on en primos de $n$.
+\begin{proof}
+Primero demostramos que en el anillo $\mathbb{Z}$ todos los ideales son principales. Primero empezamos observando que un ideal debe ser un subgrupo aditivo y en $\mathbb{Z}$ todos los subgrupos aditivos son de la forma $n\mathbb{Z}$. Adem\'as cualquier $n\mathbb{Z}$ es un ideal porque es el generado por un elemento de $n$.
+
+Ahora para probar que $p\mathbb{Z}$ son los ideales m\'aximales tomemos $\mathbb{Z}/p\mathbb{Z}$. Este es un dominio integral y adem\'as es finito, entonces por lo demostrado en clase tenemos que es un campo. Por lo tanto $p\mathbb{Z}$ es m\'aximal y por lo tanto primo tambi\'en. Si tomamos un $n$ que no sea primo entonces existe un divisor primo que lo divide. Entonces, en $\mathbb{Z}/n\mathbb{Z}$ la clase de $p$ ser\'ia un divisor de 0. Por lo tanto, $n\mathbb{Z}$ no ser\'ia ni primo ni m\'aximal.  
+
+Para este punto utlizamos las demostraciones de que en $\mathbb{Z}$ todos los ideales primos son de la forma $p\mathbb{Z}$ y que a su vez estos son todos los ideales maximales de $p\mathbb{Z}$. Entonces si $p$ es un primo tal que $p$ divide a $n$ tenemos que $p\mathbb{Z}$ es un ideal maximal que contiene a $n\mathbb{Z}$. Por lo tanto, si $n = p_1^{\alpha_1}\cdots p_n^{\alpha_n}$ entonces Jac $n\mathbb{Z}= \bigcap_{i=1}^{n} p_i\mathbb{Z}$. Pero a su vez tenemos que la intersecci\'on de ideales comaximales es igual a la multiplicaci\'on. Luego Jac $n\mathbb{Z}=\prod_{i=1}^{n} p_i\mathbb{Z}$  
+\end{proof}
+\end{enumerate}
+\newpage
+\mbox{ }
+\newpage
+\textbf{Secci\'on 7.4} \textbf{33.} Sea $R$ el anillo de todas la funciones continuas del intervalo cerrado $[0,1]$ a $\mathbb{R}$ y para cada $c \in [0,1]$ sea $M_c=\{f \in R|f(c)=0\}$.
+\begin{enumerate}[label=\textbf{(\alph*)}]
+\item Pruebe que si $M$ es cualquier ideal maximal de $R$ entonces hay un n\'umero real $c\in [0,1]$ tal que $M=M_c$.
+\begin{proof}
+Sea $M$ una funci\'on m\'aximal en nuestro anillo. Ahora para cualquier funci\'on $f \in M$, definimos el conjunto $A_f:=\{x\in[0,1]\:|\:f(x)=0\}$. Este conjunto es cerrado porque $f$ es continua y el conjunto ser\'ia la preimagen de un conjunto cerrado en $\mathbb{R}$. ($\{0\}$ y en general cualquier singleton es cerrado en $\mathbb{R}$ y por lo tanto en $[0,1]$). Entonces por el teorema de Heine-Borel concluimos que $A_f$ es compacto.
+
+Primero demostramos que $A_f$ no es vac\'io. Si lo fuera significa que la funci\'on $f$ es invertible con respecto a la multiplaci\'on. Entonces la funci\'on $1/f$ existe en $R$. Y por lo tanto $1/f*f=1 \in M$. Esto implica que $M=R$ que contradice el hecho que $M$ es un ideal m\'aximal.
+
+Ahora demostramos que la intersecci\'on finita de conjuntos de la forma $A_f$ no es vac\'ia. Supongamos por contradicci\'on que existen funciones $f_1 \cdots f_n$ tales que $A_{f_1}\cap \cdots \cap A_{f_n}= \emptyset$. Entonces yo puedo construir una funci\'on $f(x)= \sum_{i=1}^{n} f_i(x)^2$, tal que esta funci\'on de nuevo es invertible con respecto a multiplicaci\'on y de nuevo llegamos a la contradicci\'on anterior. En efecto, tomese cualquier $x \in [0,1]$. Si $x \not \in \bigcup_{i=1}^{n} A_{f_i}$ entonces todos los $f_i$ cumplen que $f_{i}(x)>0$. Si $x \in \bigcup_{i=1}^{n} A_{f_i}$ sabemos que $f_i(x)^2\geq 0$. Pero adem\'as por nuestra suposici\'on que la intersecci\'on es vac\'ia, existe algun $f_i$ tal que $f_i(x)^2>0$. Por lo que $f(x)= \sum_{i=1}^{n} f_i(x)^2>0$.
+
+Entonces por compacidad si las intersecciones finitas son no vac\'ias entonces la intersecci\'on $\bigcap_{f \in M} A_f$ no es vac\'ia. Por lo tanto, podemos tomar un $c$ en la intersecci\'on y entonces todos las funciones se anulan en $c$. Por lo tanto, $M \subseteq M_c$ pero como $M$ es m\'aximal se concluye que $M=M_c$.
+\end{proof}
+\item Pruebe que si $b$ y $c$ son puntos distintos en $[0,1]$ entonces $M_b \not = M_c$.
+\begin{proof}
+Tomese la funci\'on $f(x)=x-c$. Claramente $f$ es continua y se anula en $c$ por lo que $f \in M_c$ pero $f$ no se anula en $d$ por lo que $f \not \in M_d$. Concluimos que $M_c \not = M_d$.
+\end{proof}
+
+\item Pruebe que $M_c$ no es igual al ideal principal generado por $x-c$.
+
+\begin{proof}
+Tomese la funci\'on $|x-c|$. Si suponemos que $|x-c|$ esta en nuestro ideal entonces la funci\'on $|x-c|/(x-c)$ seria continua. Pero este no es el caso. ($|x-c|/(x-c)$ ser\'ia la funci\'on definida a trozos como 1 si $x \geq c$ y $-1$ si $x < c$ que no es continua)
+\end{proof}
+
+\item Pruebe que $M_c$ no es un ideal generado finitamente.
+\begin{proof}
+La idea es demostrar que se puede construir un $f$ a partir de los $f's$ que supuestamente generan el maximal, que no pueda ser generado por multiplicaciones y sumas de mis funciones.
+
+La siguiente demostraci\'on fue tomada de la siguiente p\'agina de internet: 
+
+\url{https://crazyproject.wordpress.com/2010/10/04/characterization-of-maximal-ideals-in-the-ring-of-all-continuous-real-valued-functions-on-01/}
+
+Supongamos que $M_c$ es finitamente generado entonces existen $f_1 \cdots f_n$ tales que $M_c= \sum_{i=0}^n f_iR$. Se puede construir la funci\'on $f(x)={\sum_{i=0}^n|f_i(x)|}$, y se puede demostrar que la funci\'on $\sqrt{f(x)}$es tal que pertenece a $M_c$ pero no pertenece al generado por las funciones $f_1 \cdots f_n$.
+
+Si suponemos por contradicci\'on que si pertenece entonces existen $r_1 \cdots r_n$ tales que $f(x)=\sum_{i=1}^n r_i(x)f_i(x).$
+
+Entonces podemos definir la funci\'on $r(x)= \sum_{i=1}^n |r_i(x)|$. Tenemos que
+\begin{equation}
+\sqrt{f(x)}= \sum_{i=1}^n r_i(x)f_i(x)\leq \sum_{i=1}^n |r_i(x)||f_i(x)|\leq r(x)f(x). \nonumber
+\end{equation}
+
+Obs\'ervese que para todo $b \not = c$ se tiene que existe un $f_i$ tal que $f_i \not = 0$. De lo contrario, tendriamos que $h(b)=0$ para todo $h \in M_c$ pero tenemos que $x-c \in M_c$ y claramente no es $0$ en $b$.
+
+Por lo anterior tenemos que $1/\sqrt{f(x)}$ esta definido en todo $x \not = c$ y es tal que $r(x)>\sqrt{f(x)}$. Adem\'as vemos que $\sqrt{f(x)} \mapsto 0$ cuando $x \mapsto c$ por lo que $1/\sqrt{f(x)}$ no estaria acotada y por lo tanto tampoco $r(x)$. Esto contradice la existencia de los $r_i$ porque todas las funciones en el anillo estan acotadas, pues como son funciones continuas desde un compacto, tenemos un teorema de an\'alisis que nos dice que estas funciones siempre tienen m\'inimo y m\'aximo. Concluimos que $M_c$ no puede ser finitamente generado.
+\end{proof}
+\end{enumerate}
+\end{document}
