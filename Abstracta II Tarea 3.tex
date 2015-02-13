@@ -1,0 +1,293 @@
+\documentclass[letter,twoside,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{fullpage}
+\usepackage{latexsym}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\title{Algebra Abstracta II: Tarea \#1}
+\newtheorem{lemma}{Lema}
+\author{Jonathan Andr\'es Ni\~no Cort\'es}
+\begin{document}
+\maketitle
+\textbf{Teorema chino del residuo sobre $\mathbb{Z}$ y el teorema de interpolaci\'on de Lagrange}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+\item Sean $a,b \in \mathbb{F}$ y $ c(x) \in \mathbb{F}[x]$. Muestre que $ c(a)=b $ si y solo si $ c(x) \equiv \text{mod } (x-a) $.
+
+\begin{proof}
+Suponga que $c(x) \equiv b \text{ mod} (x-a)$, entonces existe un polinomio $ Q(x) $ tal que $c(x)-b=Q(x)(x-a)$. Es decir que $c(x)=Q(x)(x-a)+b$. Por lo tanto $c(a)=Q(a)(a-a)+b=b$.
+
+Ahora suponga que $c(a)=b$. Tendriamos por lo tanto que el polinomio $f(x)=c(x)-b$ es tal que $ f(a)=c(a)-b=b-b = 0$. Por lo tanto $f(x)$ tiene una raiz en $a$ por lo que es divisible por $ x-a $. Por lo tanto, $f(x)=c(x)-b \equiv 0 \text{ mod} (x-a)$. De donde se concluye que $c(x) \equiv b \text{ mod} (x-a)$.
+\end{proof}
+
+\item Deduzca el teorema de interpolaci\'on de Lagrange del Teorema chino del residuo.
+\begin{proof}
+El teorema chino del residuo generalizado nos dice que si $R$ es un anillo conmutativo e $I_1 \cdots I_n \subseteq R$ son ideales comaximales dos a dos entonces el homomorfismo $\phi:R \to R/I_1 \times \cdot \times R/I_n$, tal que $\phi(x) \mapsto (x+I_1, \cdots x+I_n)$. Entonces, $\phi$ es sobreyectiva y ker$ (\phi)=I_1\cdots I_n$. 
+
+Para poder utilizarlo en el teorema de interpolaci\'on de Lagrange tenemos que verificar que los supuestos se cumplen. En primer lugar el anillo $\mathbb{F}[x]$ es conmutativo. Los ideales que vamos a tomar son los principales de los polinomios de la forma $ x-x_i $. Para demostrar que son comaximales tomese $x_i$ y $x_j$ tales que $i \not = j$. Entonces $ 1= \frac{1}{(x_j-x_i)}(x-x_i)-\frac{1}{(x_j-x_i)}(x-x_j) $, por lo que $\langle(x-x_i) \rangle + \langle(x-x_j) \rangle = \langle 1 \rangle$. (Obs\'ervese que $x_j-x_i \not = 0$ porque alguno de los dos es diferente a $0$).
+
+Por lo tanto podemos aplicar el teorema chino del residuo. Como resultado obtenemos que para cualquier $(y_0, \cdots, y_n)$ existe un \'unico polinomio $p(x)$ m\'odulo $ \langle(x-x_0) \rangle\cdots \langle(x-x_n) \rangle $ tal que $p(x) \equiv y_i$ mod $ \langle x-x_i \rangle$ para todo $i \in \{0,\cdots, n\}$. Por el literal anterior, esto equivale a que $p(x_i)=y_i$.
+
+Y que sea \'unico m\'odulo el producto de los ideales implica que \'unicamente hay un polinomio de grado a lo sumo $n$ que cumple esta propiedad. Que existe un polinomio de grado a lo sumo igual a $n$ es una consecuencia del alg\'oritmo de la divisi\'on, pues este nos dice que existen unicos polinomios $q(x)$ y $r(x)$ tales que $p(x)=q(x)(x-x_0)\cdots(x-x_n)+r(x)$ con $r(x)$ de grado menor a $n+1$. Por lo tanto tomamos el polinomio $r(x)$, como el polinomio que buscamos en la interpolaci\'on de Lagrange.
+
+Por otra parte para demostrar que es \'unico podemos demostrar el siguiente lema.
+\begin{lemma}
+Sean $p(x), m(x)$ polinomios tales que deg$ (p(x)) <$ deg$ (m(x)). $Si $p(x)$ es un polinomio que es congruente a 0 m\'odulo $\langle m(x) \rangle$.
+\begin{proof}
+Lo anterior quiere decir que existe un polinomio $q(x)$ tal que $p(x)=q(x)m(x)$. Supongase por contradicci\'on que $p(x) \not = 0$, entonces tenemos que $q(x)$ y $m(x)$ son diferentes de 0 pues $\mathbb{F}[x]$ es un dominio. Entonces, si analizamos los grados tenemos que  $\text{deg}(p(x))=\text{ deg}(q(x)m(x))=$deg$(q(x))$+deg($m(x)$). Pero esto no es posible por nuestra suposici\'on. Por lo tanto, concluimos que $p(x)=0$.
+\end{proof} 
+\end{lemma}
+Por lo tanto, si tomamos $r(x),r'(x)$ tales que cumplen con la interpolaci\'on de Lagrange y adem\'as que el grado de ambos es a lo sumo $n$, entonces tenemos que $r(x) \equiv r'(x)$ mod$\langle (x-x_0)\cdots (x-x_n) \rangle$. Entonces tenemos que  $r(x)-r'(x) \equiv 0$ mod$\langle (x-x_0)\cdots (x-x_n) \rangle$. Y tenemos que deg$(r(x)-r'(x))<n<$ deg$((x-x_0)\cdots (x-x_n))$. Concluimos que $r(x)-r'(x)=0$ por lo que $r(x)=r'(x)$.
+\end{proof}
+\item Sean $x_0 \in \mathbb{F}$ y $h(x) \in \mathbb{F}[x]$ tal que $h(x_0) \not = 0$. Encuentre $s_0(x)$ y $t_0(x)$ en $\mathbb{F}[x]$ tales que
+\begin{equation}
+s_0(x)(x-x_0)+t_0(x)h_0(x)=1. \nonumber
+\end{equation}
+\begin{proof}
+Utilizamos el algoritmo de la divisi\'on para dividir $h_0(x)$ por $(x-x_0)$ (tal como se har\'ia en el algoritmo de euclides).
+
+Tendriamos que
+\begin{equation}
+h_0(x)=q(x)(x-x_0)+r(x)
+\end{equation} 
+
+Con $ q(x) $ y $ r(x) $ \'unicos y deg$(r(x))<$deg$(x-x_0)=1$. Por lo tanto $r(x)$ solo puede ser una constante. Adem\'as $r$ denotada de esta manera porque es una constante no puede ser igual a la constante 0, pues esto implicaria que $h_0(x)$ ser\'ia divisible por $x-x_0$, es decir que al evaluar en $x_0$, tendriamos que $h_0(x_0)=0$ que contradice nuestra suposici\'on.
+
+Pero aun m\'as, si reducimos m\'odulo $\langle x - x_0 \rangle$ tenemos que $h_0 \equiv r $ mod $\langle x - x_0 \rangle$. Por el punto tenemoes que esto es equivalente a que $r=h_0(x_0)$.
+
+Finalmente dividimos la ecuaci\'on (1) a lado y lado por $h_0(x_0)$ y obtenemos
+
+\begin{equation}
+\frac{h_0(x)}{h_0(x_0)}=\frac{q(x)}{h_0(x_0)}(x-x_0)+1 \nonumber
+\end{equation}
+y despejando el 1 obtenemos
+\begin{equation}
+-\frac{q(x)}{h_0(x_0)}(x-x_0)+\frac{h_0(x)}{h_0(x_0)}=+1 \nonumber
+\end{equation}
+
+Luego $s_0(x) = -q(x)/h_0(x_0)$ y $t_0(x)=1/h_0(x_0)$.
+\end{proof}
+\item Encuentre una f\'ormula explicita para el polinomio $p(x)$ del T.I.L.
+\begin{proof}
+
+Siguiendo la misma estrategia descrita para el teorema chino del residuo en los enteros, vamos a buscar polinomios $p_i(x)$ tales que $p_i(x_i)=1$ y $p_i(x_j)=0$ si $i\not = j$.
+Para encontrarlos buscamos los polinomios $s_i(x)$ y $t_i(x)$ que resuelvan la ecuaci\'on
+
+\begin{equation}
+s_i(x)(x-x_i)+t_i(x)h_i(x)=1. \nonumber
+\end{equation}
+
+Donde 
+\begin{equation}
+h_i(x)=\prod_{j=0,j\not=i}^{n} (x-x_j). \nonumber
+\end{equation}
+
+Entonces, por el punto anterior tenemos que 
+\begin{equation}
+t_i(x)=\frac{1}{h_i(x_i)}=\prod_{j=0,j\not=i}^{n} \frac{1}{x_i-x_j} \nonumber
+\end{equation}
+
+Luego el polinomio $p_i(x)$que estamos buscando es
+
+\begin{equation}
+p_i(x)=t_i(x)h_i(x)=\prod_{j=0,j\not=i}^{n} \frac{x-x_j}{x_i-x_j} \nonumber
+\end{equation}
+
+N\'otese que este polinomio es de grado $n$ porque es la multiplicaci\'on de $n$ polinomios de grado 1.
+
+Por ultimo el polinomio $p(x)$ de la interpolaci\'on de Lagrange ser\'ia
+\begin{equation}
+p(x)=\sum_{i=0}^{n}y_ip_i(x) \nonumber.
+\end{equation}
+
+N\'otese que el grado de este polinomio es a lo sumo $n$ porque es el resultado de la suma de polinomios de grado $n$.
+\end{proof}
+\end{enumerate}
+
+\newpage
+\mbox{ }
+\newpage
+\textbf{Secci\'on 7.5} \textbf{1.} Completa todos los detalles en la prueba del teorema 15.
+\begin{proof}
+Parte de los detalles que faltan es probar que $Q$ con las operaciones
+\begin{equation}
+\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd} \text{ y } \frac{a}{b} \times \frac{c}{d}=\frac{ac}{bd} \nonumber
+\end{equation}
+
+\begin{itemize}
+\item \underline{Las operaciones estan bien definidas:} Tengase en cuenta que $\frac{a}{b} = \frac{a'}{b'}$ si y solo si $ab'=ba'$.
+
+Sean $\frac{a}{b} = \frac{a'}{b'}$ y $\frac{c}{d} = \frac{c'}{d'}$. Por un lado
+\begin{equation}
+\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd}  \text{ y }\frac{a'}{b'}+\frac{c'}{d'}=\frac{a'd'+b'c'}{b'd'} \nonumber
+\end{equation} 
+Tenemos que $ (ad+bc)b'd'=adb'd'+bcb'd'=a'bdd'+c'dbb'=(a'd'+b'c')bd $. Luego la suma esta bien definida
+
+Similarmente, para la multiplicaci\'on tenemos que
+
+\begin{equation}
+\frac{a}{b} \times \frac{c}{d}=\frac{ac}{bd}  \text{ y }\frac{a'}{b'}+\frac{c'}{d'}=\frac{a'c'}{b'd'} \nonumber
+\end{equation} 
+Y tenemos que $acb'd'=a'c'bd$, luego la multiplicaci\'on esta bien definida
+\item \underline{La suma es asociativa:} Sean $ \frac{a}{b} $,$ \frac{c}{d} $,$ \frac{e}{f} \in Q$. Por un lado
+
+\begin{equation}
+\frac{a}{b}+(\frac{c}{d}+\frac{e}{f})=\frac{a}{b}+\frac{cf+de}{df}=\frac{adf+bcf+bde}{bdf} \nonumber
+\end{equation}
+
+Por otra parte,
+\begin{equation}
+(\frac{a}{b}+\frac{c}{d})+\frac{e}{f}=\frac{ad+bc}{bd}+\frac{e}{f}=\frac{adf+bcf+bde}{bdf} \nonumber
+\end{equation}
+Por lo tanto es asociativa.
+\item \underline{La suma es conmutativa:} Sean $ \frac{a}{b}, \frac{c}{d} \in Q$
+
+Tenemos que
+\begin{equation}
+\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd}=\frac{cb+da}{db}=\frac{c}{d}+\frac{a}{b} \nonumber
+\end{equation}
+por lo cual la suma es conmutativa
+
+\item \underline{$\frac{0}{d}$ es la identidad de la suma:}
+
+En efecto tenemos
+\begin{equation}
+\frac{0}{d}+\frac{a}{b}=\frac{0b+da}{db}=\frac{da}{db}=\frac{a}{b}. \nonumber
+\end{equation}
+La ultima igualdad se da porque $ dab=dba $.
+
+\item \underline{$ \frac{-a}{b} $ es el inverso de $ \frac{a}{b} $:}
+Tenemos que 
+\begin{equation}
+\frac{a}{b}+\frac{-a}{b}=\frac{ab+b(-a)}{bb}=\frac{ab-ab}{bb}=\frac{0}{bb} \nonumber
+\end{equation}
+
+\item \underline{La multiplicaci\'on es asociativa:} Sean $ \frac{a}{b} $,$ \frac{c}{d} $,$ \frac{e}{f} \in Q$. Por un lado
+\begin{equation}
+\frac{a}{b} \times (\frac{c}{d} \times \frac{e}{f}) = \frac{a}{b}\times \frac{ce}{df} = \frac{ace}{bdf} \nonumber
+\end{equation}
+Por el otro lado 
+\begin{equation}
+(\frac{a}{b} \times \frac{c}{d}) \times \frac{e}{f} = \frac{ac}{bd} \times \frac{ace}{bdf} \nonumber
+\end{equation}
+
+Por lo que la multiplicaci\'on es asociativa.
+
+\item \underline{La multiplicaci\'on es conmutativa:} Sean $ \frac{a}{b} $,$ \frac{c}{d} \in Q $.
+\begin{equation}
+\frac{a}{b}\times \frac{c}{d} = \frac{ac}{bd} = \frac{ca}{db}=\frac{c}{d}\times \frac{a}{b} \nonumber
+\end{equation}
+Por lo cual, la multiplicaci\'on es conmutativa
+
+\item \underline{La identidad de $ Q $ es $ \frac{d}{d} $:} En efecto,
+\begin{equation}
+\frac{d}{d} \times \frac{a}{b}=\frac{da}{db}=\frac{a}{b} \nonumber
+\end{equation} 
+
+La ultima igualdad se da porque $ dab=dba $.
+
+\item \underline{La multiplicaci\'on es distributiva:} Sea $ \frac{a}{b},  \frac{c}{d}, \frac{e}{f} \in Q $.
+
+\begin{equation}
+\frac{a}{b}\times(\frac{c}{d}+\frac{e}{f})=\frac{a}{b}\times \frac{cf+de}{df}=\frac{acf+ade}{bdf} \nonumber
+\end{equation}
+
+Por otro lado
+
+\begin{equation}
+(\frac{a}{b} \times \frac{c}{d})+(\frac{a}{b} \times \frac{e}{f})= \frac{ac}{bd}+\frac{ae}{bf} = \frac{acbf+bdae}{bdbf} = \frac{b}{b}\times \frac{acf+dae}{dbf}=\frac{acf+dae}{dbf}\nonumber
+\end{equation}
+
+Concluimos que la multiplicaci\'on es distributiva.
+
+\end{itemize}
+
+Por ultimo falta probar que la funci\'on $ \Phi: Q \mapsto S $ tal que $ \Phi(rd^{-1})=\phi(r)\phi(d)^{-1} $ es un homomorfismo de anillos entre $Q$ y $S$. 
+Por un lado,
+\begin{equation}
+\Phi(rd^{-1}se^{-1})=\Phi(rs(de)^{-1})=\phi(rs)\phi(de)^{-1}=\phi(r)\phi(s)\phi(d)^{-1}\phi(e)^{-1}=\Phi(rd^{-1})\Phi(se^{-1}) \nonumber
+\end{equation}
+Por otro lado,
+\begin{eqnarray}
+\Phi(rd^{-1}+se^{-1})&=&\Phi((re+ds)(de)^{-1}) \nonumber
+\\&=&\phi(re+ds)\phi(de)^{-1} \nonumber
+\\&=&(\phi(r)\phi(e)+\phi(d)\phi(s))\phi(d)^{-1}\phi(e)^{-1} \nonumber
+\\&=&\phi(r)\phi(e)\phi(d)^{-1}\phi(e)^{-1}+\phi(d)\phi(s)\phi(d)^{-1}\phi(e)^{-1} \nonumber
+\\&=&\phi(r)\phi(d)^{-1}+\phi(s)\phi(e)^{-1} \nonumber
+\\&=&\Phi(rd^{-1})+\Phi(se^{-1}) \nonumber
+\end{eqnarray}
+
+Por lo tanto $ \Phi(rd^{-1}) $ es un homomorfismo entre anillos.
+\end{proof}
+\newpage
+\textbf{Secci\'on 7.5} \textbf{3.} Sea $F$ un campo. Pruebe que $F$ contiene un \'unico subcampo m\'as peque\~no $F_0$ y que $F_0$ es isom\'orfico a $\mathbb{Q}$ o $\mathbb{Z}/p\mathbb{Z}$ para un primo $p$ ($F_0$ se llama el subcampo primo de $F$).
+\begin{proof}
+Tomemos el homomorfismo $\phi:\mathbb{Z} \to F$ definido en el ejercicio 26 de la secci\'on 7.3. Por ese punto sabemos que el kernel del homomorfismo debe ser $n\mathbb{Z}$ donde $n$ es la caracteristica del campo. Si $n$ es cero entonces el kernel es $\{0\}$ y por lo tanto el homomorfismo es inyectivo. Es decir que $F$ contiene un subanillo isomorfo a los enteros. Por el Teorema 15 de Dummit hay una \'unica inyecci\'on que me da el campo cociente de este subanillo que debe ser isomorfo a $\mathbb{Q}$.
+
+Si $n$ no es cero entonces tenemos que hay un subanillo $\mathbb{Z}/n\mathbb{Z}$ pero al estar contenido en un campo ning\'un elemento puede ser un divisor de cero. Esta restricci\'on obliga a que $n$ sea igual a $p$ un primo de $\mathbb{Z}$. Pero adem\'as como $\mathbb{Z}/p\mathbb{Z}$ es un dominio integro finito, es un campo por un ejercicio demostrado en clase.
+
+Supongamos que $ F^* $ sea un subcampo de $F$. Sea $1_F$ la identidad de $F$ y $ 1* $ la identidad de $F_*$. Si tomamos un elemento cualquiera $a \in F^*$ tenemos que existe $a^{-1} \in F^*$ tal que $aa^{-1}=1_*$. Sin embargo, los elementos tambi\'en pertenecen a $ F $ por lo que $ aa^{-1}=1_F$. Por lo tanto, $ 1_*=1_F$.
+
+Ahora tomemos un campo cualquier $ F^* $ sabemos que $1$ pertenece a $ F^* $, pero adem\'as cualquier elemento de la forma $1+\cdots +1$ debe pertenecer a $F^*$. Si el campo es de caracteristica $ p $ entonces tenemos que hay por lo menos $ p $ elementos en $ F^* $ pero adem\'as estos son los mismos elementos del campo $ F_0 $. Por lo tanto $ F_0  \subseteq F^*$. Por otro lado si el campo es de caracteristica 0 tenemos que en $F^*$ deben estar contenidos todos los elementos pertenecientes a la imagen del isomorfismo aplicado de $ \mathbb{Z} $ a $ R $. As\'i que el campo generado por estos elementos que es $ F_0 $ debe estar incluido en $ F^{*} $. As\'i demostramos que $ F_0 $ es el m\'as peque\~no y es \'unico.
+\end{proof}
+\newpage
+\textbf{Secci\'on 8.1} \textbf{3.} Sea $R$ un Dominio Euclideano. Sea $m$ el m\'inimo entero en el conjunto de normas de elementos diferentes a cero de $R$. Pruebe que cualquier elemento diferente a cero de $R$ de norma $m$ es una unidad- Deduzca que un elemento no cero de norma cero (si tal elemento existe) es una unidad.
+\begin{proof}
+Sea $a \in R$ tal que su norma es $m$. Entonces podemos utilizar el algoritmo de la divisi\'on para dividir a 1 por $r$. Entonces tenemos que existen $q y r$ tales que $1=qa+r$, y que $N(r)$ (N(r) es la norma de r) debe ser menor a $N(a)=m$. Pero como $m$ es la minima norma de un elemento no cero, la \'unica posibilidad es que $r=0$ por lo cual $1=qa$ y por lo tanto $a$ es una unidad. Claramente si tengo un elemento no cero con norma 0, esta es la m\'inima norma que puede tener y por lo demostrado anteriormente ser\'ia una unidad.   
+\end{proof}
+\newpage 
+\textbf{Secci\'on 8.1} \textbf{10.} Pruebe que el anillo cociente $\mathbb{Z}[i]/I$ es finito para cualquier ideal no cero $I$ de $\mathbb{Z}[i]$. 
+\begin{proof}
+En el libro mencionan que el anillo $\mathbb{Z}[i]$ tiene una norma tal que $N(a+bi)=a^2+b^2$, y hay una divisi\'on euclideana de tal manera que este es un dominio euclideano. Entonces es un dominio de ideales principales por lo que cualquier ideal lo podemos expresar como $(\alpha)$ con $\alpha \in \mathbb{Z}[i]$. Sea $N(\alpha)=n$. Ahora tomemos una clase lateral $\beta + I$. Por el algoritmo de la divisi\'on tenemos que existen elementos $d,r \in \mathbb{Z}[i]$ tales que $\beta = d\alpha+r$ y $N(r)<n$.
+
+Vemos que $\beta-r = d\alpha$ por lo que $\beta + I = r + I$. Pero por otra parte podemos demostrar que la cantidad de elementos en $\mathbb{Z}[i]$ con norma menor a $n$ son finitos. Esto se puede ver porque el n\'umero de elementos tiene una cota superior que son $2n$. Por lo tanto el anillo conciente es finito.
+\end{proof}
+\newpage 
+\textbf{Secci\'on 8.1} \textbf{11.} Sea $R$ un anillo conmutativo co 1 sea $a$ y $b$ elementos diferentes a cero de $R$. Un m\'inimo com\'un m\'ultiplo de $a$ y $b$ es un elemento $e$ de $R$ tal que
+\begin{enumerate}[label=\textbf{(\roman*)}]
+\item $ a|e $ y $ b|e $, y
+\item si $ a|e' $ y $ b|e' $ entonces $ e|e' $.
+\end{enumerate}
+\begin{enumerate}[label=\textbf{(\alph*)}]
+\item Pruebe que un m\'inimo com\'un m\'ultiplo de $ a $ y $ b $ (si existe) es un generador para el \'unico ideal principal m\'as grande contenido en $ (a) \cap (b) $.
+
+\begin{proof}
+Primero probemos que $m=[a,b]$ es tal que $(m) \in (a) \cap (b)$. T\'omese cualquier elemento $x=rm \in (m)$ con $r \in R$. Entonces por las condiciones anteriores sabemos que $m=ka$ por lo que $x=rm=rka$ por lo que pertenece a $(a)$. Igualmente $m=jb$ por lo que $x=rm=rjb$ tambi\'en pertenece a $(b)$. Luego pertenece a $(a) \cap (b)$. Ahora para probar que es el m\'as grande t\'omese cualquier otro ideal $(m')$ contenido en $(a) \cap (b)$. Esto quiere decir que $a|m'$ y $b|m'$ porque en particular $m \in (a) \cap (b)$, luego existen $r,r' \in R$ tales que $ m'=ra $ y $ m'=r'b $. Pero por la segunda propiedad, tenemos que $mk=m'$. Lo que quiere decir que $(m') \subseteq (m)$. Luego vemos que $ (m) $ es el m\'as grande  adem\'as el \'unico ideal principal contenido en $ (a) \cap (b) $. 
+\end{proof}
+
+\item Deduzca que cualesquiera dos elementos diferentes de cero en un dominio euclideano tiene un m\'inimo com\'un m\'ultiplo que es \'unico m\'odulo la multiplicaci\'on por una unidad.
+
+\begin{proof}
+Si tomamos $a,b $ elementos diferentes de 0. Entonces habr\'ia que demostrar por una parte que el m\'inimo com\'un multiplo existe. Este es el caso porque existe $m \in R$ tal que $ (m)=(a) \cup (b) $ porque estamos sobre un dominio de ideales principales. Entonces por el punto anterior $m$ es un generador del ideal principal m\'as grande en $ (a) \cup (b) $, que es \'el mismo, luego es un m\'inimo com\'un m\'ultiplo de $a$ y $b$. 
+
+Adem\'as si tomamos $m$ y $m'$ tales que sean m\'inimos comunes divisores entonces ambos pueden verse como generadores del ideal principal m\'as grande contenido en $(a) \cap (b)$. Por el punto anterior tendriamos que $(m)=(m')$. Por ultimo, por un punto demostrado en la tarea anterior tenemos que $m=um'$ donde $u$ es una unidad del anillo.
+\end{proof}
+
+\item Pruebe que en un dominio euclideano el m\'inimo com\'un m\'ultiplo de $ a $ y $ b $ es $ \frac{ab}{(a,b)} $, donde $ (a,b) $ es el m\'aximo com\'un divisor de $ a $ y $ b $. 
+
+\begin{proof}
+Sabemos que $ (a) + (b) $ en un dominio euclideano es igual al ideal generado por $ (a,b) $. Adem\'as sabemos por el punto anterior que $ (a) \cap (b) $ es el ideal generado por $ [a,b] $.
+
+Se puede probar que $(a)(b)=(ab)$. T\'omese un elemento $rab \in (ab)$, a\'utomaticamente pertenece a $(a)(b)$ como la suma finita de un solo elemento de la forma $ rab $. Por otro lado tome un elemento $x \in (a)(b)$. Luego $x = \sum_{i=1}^n a_ib_i$, con $a_i \in (a)$ y $ b_i \in (b) $. Luego $ x = \sum_{i=1}^{n} r_iar'_ib= \sum_{i=1}^{n} r_ir'_iab=\sum_{i=1}^{n} (r_ir'_i)ab$ y por lo tanto pertenecen a $(ab)$.
+
+Ahora podemos probar que en un dominio euclideano $ (ab) =((a,b)[a,b])$. Tenemos que existen $j$ y $ k $ tales que $ (a,b)j=a $ y $ (a,b)k=b $.
+
+Un elemento $d$ en $ ((a,b)[a,b]) $ es de la forma $r(ax+by)c$ con $r,x,y \in R$ y $c \in (a) \cap (b)$, luego $r(ax+by)c=rxac+rycb$ Vemos que esta es una suma finita de elementos de la forma $a'b'$ con $ a'=rxa $ o $ a' = ryc $ y $b'=c$ o $b' = b$. Luego $d \in (ab)$.
+
+Por otra parte t\'omese cualquier elemento $rab \in (ab)$. Por un lado tenemos que $ a=k(a,b) $. Y por el otro que $b=j(a,b)$. Luego $ rab = rk(a,b)b = raj(a,b) $. Vemos que $kb=ja$, es decir que pertenece a $(a) \cap (b)$. Por lo tanto $rab=rc(a,b)$ donde $c \in (a \cap b)$. Por lo tanto $rab \in ((a,b)[a,b])$. 
+ \end{proof}
+\end{enumerate}
+\newpage
+\textbf{Secci\'on 8.1} \textbf{12.} Sea $N$ un entero positivo. Sea $ M $ un entero primo relativo a $ N $ y sea $ d $ un entero primo relativo a $ \varphi(N) $, donde $ \varphi $ denota la funci\'on $ \varphi $ de Euler. Pruebe que si $ M_1 = M^d $(mod $ N $)entonces $ M = M_1^d $(mod $ N $) donde $ d' $ es el inverso de $ d $ mod $ \varphi(N): dd'\equiv 1$ (mod $ \varphi(N) )$.
+
+\begin{proof}
+Para probar esto utilizamos el teorema de Euler Fermat. Si $(a,m)=1$ entonces $a^{\varphi(m)}\equiv 1$ (mod $m$).
+
+Entonces, partiendo de la expresi\'on $M_1 \equiv M^d$ (mod $N$) elevamos a ambos lados por $d'$. $M_1^{d'} \equiv (M^{d})^{d'} \equiv M^{dd'}$ (mod $N$). Pero sabemos que $dd'\equiv 1$ (mod $ \varphi(N) )$, por lo que $dd'=k\varphi(N)+1$. Por lo tanto, $M_1^{d'}\equiv M^{dd'}\equiv M^{k\varphi(N)+1} \equiv (M^{\varphi(N)})^kM \equiv (1)^kM \equiv M $(mod $N$).
+
+
+\end{proof}
+\end{document}
