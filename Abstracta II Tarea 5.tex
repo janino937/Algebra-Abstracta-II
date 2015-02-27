@@ -21,9 +21,9 @@
 \item Sea $ F $ un campo y sea $ f(x) $ un polinomio no constante en $ F[x] $. Describa el nilradical de $ F[x]/(f(x)) $ en términos de la factorización de $ f(x) $
 
 \begin{proof}
-Como $ F $ es un campo tenemos que $ F[x] $ es un dominio euclideano y por lo tanto es un D.I.P y un D.F.U. En primer lugar existe una factorización única de $ f(x) $ en irreducibles. Sea dicha factorización $ f(x)=\pi_1^{\alpha_1} \cdots \pi_n^{\alpha_n} $. En un punto en una tarea anterior se demostró que el nilradical de $R/I$ es igual a el $ \text{rad } I /I$ donde rad $ I $ es $ \{r \in R| r^n \in I\ \text{para algún} R \in \mathbb{Z}^+\} $
+Como $ F $ es un campo tenemos que $ F[x] $ es un dominio euclideano y por lo tanto es un D.I.P y un D.F.U. En primer lugar existe una factorización única de $ f(x) $ en irreducibles. Sea dicha factorización $ f(x)=\pi_1^{\alpha_1} \cdots \pi_n^{\alpha_n} $. En un punto en una tarea anterior se demostró que el nilradical de $R/I$ es igual al $ \text{rad } I /I$ donde rad $ I $ es $ \{r \in R\;|\; r^n \in I\ \text{para algún } R \in \mathbb{Z}^+\} $
 
-Para nuestro caso rad $(f(x)) = (\pi_1\cdots \pi_n)$ En efecto, para cualquier $ r \in  $ rad $ (f(x)) $ tenemos que $ r^n = q\pi_1^{\alpha_1} \cdots \pi_n^{\alpha_n}$. Entonces $r$ también es divisible por los mismos irreducibles que $r^n$ por lo que $ r \in (\pi_1 \cdots \pi_n) $ y además $ \pi_1 \cdots \pi_n \in  $ rad $ (f(x)) $ pues  $ \pi_1^{\alpha} \cdots \pi_n ^\alpha \in (f(x))$ para $ \alpha = \max(\alpha_i)$. 
+Para nuestro caso rad $(f(x)) = (\pi_1\cdots \pi_n)$. En efecto, para cualquier $ r \in  $ rad $ (f(x)) $ tenemos que $ r^n = q\pi_1^{\alpha_1} \cdots \pi_n^{\alpha_n}$. Entonces $r$ también es divisible por los mismos irreducibles que $r^n$ por lo que $ r \in (\pi_1 \cdots \pi_n) $ y además $ \pi_1 \cdots \pi_n \in  $ rad $ (f(x)) $ pues  $ \pi_1^{\alpha} \cdots \pi_n ^\alpha \in (f(x))$ para $ \alpha = \max(\alpha_i)$. 
 
 Por lo tanto el nilradical de $ F[x]/(f(x)) $ es $ (\pi_1\cdots \pi_n)/(f(x)) $.
 \end{proof}
@@ -37,7 +37,7 @@ Por lo tanto el nilradical de $ F[x]/(f(x)) $ es $ (\pi_1\cdots \pi_n)/(f(x)) $.
 
 $ F[x] $ y $ K[x] $ son ambos dominios euclideos, y por lo tanto también son dominios de factorización única.
 
-$ \Rightarrow $: $ \text{m.c.d}_{F [x]}(p, q) = 1 $ implica que existen $ r, s  \in P[x]$ tales que $ pr+qs=1$. Pero $ p $, $ r $, $ q $ y $ s $ petenecen a $ K[x] $. Por lo tanto, $ \text{m.c.d}_{K [x]}(p, q) = 1 $.
+$ \Rightarrow $: $ \text{m.c.d}_{F [x]}(p, q) = 1 $ implica que existen $ r, s  \in P[x]$ tales que $ pr+qs=1$. Pero $ p $, $ r $, $ q $ y $ s $ pertenecen a $ K[x] $. Por lo tanto, $ \text{m.c.d}_{K [x]}(p, q) = 1 $.
 
 Observación: Tanto en $ F[x] $ como en $ K[x] $ las unidades son los polinomios de grado 0, es decir las constantes. Esto es una consecuencia de la norma euclidea asociada a estos anillos.
 
@@ -59,7 +59,7 @@ Por el literal anterior, esto es equivalente a demostrar  que $ \text{m.c.d}_{\m
 
 $ \Rightarrow $: Suponga que $ p $ tiene raices repetidas. Entonces $ p(x) = (x-\alpha)^2q(x)$, donde $ \alpha \in \mathbb{C} $ y $ q(x) \in \mathbb{C} $. Por cálculo de variable compleja sabemos que la derivada es igual a $ p'(x) = 2(x-\alpha)q(x)+(x-\alpha)^2q'(x)$. Concluimos que $ (x-\alpha) $ divide tanto a $ p $ como a $ p' $. Luego $ \text{m.c.d}_{\mathbb{C}[x]}(p, p') \not = 1 $.
 
-$ \Leftarrow $: Suponga que $ p(x) $ no tiene raices repetidas. Luego $ p = (x-\alpha_1)(x-\alpha_2)\cdots (x-\alpha_n) $. Además, sabemos que en $ \mathbb{C} $ los polinomios de grado 1 son irreducibles por lo que esta es la factorización única en irreducibles de $ p $. Entonces vamos a demostrar que níngun $ x- \alpha_i $ divide a $ p'(x) $ lo que implica que $ \text{m.c.d}_{\mathbb{C}[x]}(p, p') = 1 $., pues no tendrían factores irreducibles en común.
+$ \Leftarrow $: Suponga que $ p(x) $ no tiene raices repetidas. Luego $ p = (x-\alpha_1)(x-\alpha_2)\cdots (x-\alpha_n) $. Además, sabemos que en $ \mathbb{C} $ los polinomios de grado 1 son irreducibles por lo que esta es la factorización única en irreducibles de $ p $. Entonces vamos a demostrar que níngun $ x- \alpha_i $ divide a $ p'(x) $ lo que implica que $ \text{m.c.d}_{\mathbb{C}[x]}(p, p') = 1 $, pues no tendrían factores irreducibles en común.
 
 Obsérvese que $p(x)=(x-\alpha_i)q(x)$ donde $ q(x) $ no es divisible por $ (x-\alpha_i) $.
 Si $ p'(x) $ fuera divisible por $ (x-\alpha_i) $ entonces $ q(x) = p'(x)-(x-\alpha_i)q'(x) $ sería divisible por $ (x-\alpha_i) $ lo cual es una contradicción. Por lo tanto $ p'(x) $ no es divisible por $ x- \alpha_i $. Esto concluye la demostración.
@@ -68,7 +68,7 @@ Si $ p'(x) $ fuera divisible por $ (x-\alpha_i) $ entonces $ q(x) = p'(x)-(x-\al
 \item Sea $R$ un D.F.U. y sea $ a \in R $. De condiciones necesarias y suficientes sobre a de tal forma que $x^2-a$ sea
 un polinomio irreducible en $ R[x] $.
 \begin{proof}
-La condición necesaria y suficiente para que $ x^2-a $ sea un polinomio irreducible en $ R[x] $ es que $ a $ no sea un cuadrado perfecto. Por un lado es necesaria porque si $ a=\alpha^2 $ entonces $ x^2-a =(x-\alpha)(x+\alpha)$. Por otro lado es suficiente pues si suponemos que $ x^2-a $ es reducible, entonces existen polinomios que deben ser de grado 1, $ (x+\alpha)(x+\beta) $ con $ \alpha,\beta \in R $ tales que $ (x+\beta)(x+\gamma) = x^2-1 $. Por lo tanto, $ x^2+(\alpha+\beta)x+\alpha\beta =x^2-1$ de donde deducimos que $ \alpha+\beta = 0  $ y $ \alpha\beta = -a$. Por lo tanto, $ \alpha = - \beta $ y $-a = \alpha(-\alpha)$ de donde deducimos que $ a = \alpha^2 $ es un cuadrado perfecto.
+La condición necesaria y suficiente para que $ x^2-a $ sea un polinomio irreducible en $ R[x] $ es que $ a $ no sea un cuadrado perfecto. Por un lado es necesaria porque si $ a=\alpha^2 $ entonces $ x^2-a =(x-\alpha)(x+\alpha)$. Por otro lado es suficiente pues si suponemos que $ x^2-a $ es reducible, entonces existen polinomios que deben ser de grado 1, $ (x+\alpha)(x+\beta) $ con $ \alpha,\beta \in R $ tales que $ (x+\beta)(x+\gamma) = x^2-1 $. Por lo tanto, $ x^2+(\alpha+\beta)x+\alpha\beta =x^2-1$ de donde deducimos que $ \alpha+\beta = 0  $ y $ \alpha\beta = -a$. Por lo tanto, $ \alpha = - \beta $ y $-a = \alpha(-\alpha)$ de donde concluimos que $ a = \alpha^2 $ es un cuadrado perfecto.
 
 \end{proof}
 \item Sea $ K $ un cuerpo y sea $ f(x) \in K[x] $ un polinomio de grado al menos 1 que no es un cuadrado perfecto.
@@ -79,7 +79,7 @@ K[x,y]/\langle y^2-f(x)\rangle\nonumber
 es un dominio.
 
 \begin{proof}
-Esto es una consecuencia del punto anterior, pues $ K[x,y]=K[x][y] $ y nuestra suposición nos dice que $ f(x) $ no es un cuadrado perfecto. Por lo tanto, $ y^2 -f(x)$ es irreducible en $ K[x,y] $. Pero además, como $ K $ es un cuerpo $ K[x] $ sería un dominio euclideo y por lo tanto un D.F.U. y $ K[x,y] $ sería un D.F.U. también por un teorema visto en clase. Por lo tanto como $ y^2 -f(x)$ también es primo y por lo tanto $ K[x,y]/\langle y^2-f(x)\rangle\nonumber $ es un dominio.
+Esto es una consecuencia del punto anterior, pues $ K[x,y]=K[x][y] $ y nuestra suposición nos dice que $ f(x) $ no es un cuadrado perfecto en $ K[x] $. Por lo tanto, $ y^2 -f(x)$ es irreducible en $ K[x,y] $. Pero además, como $ K $ es un cuerpo $ K[x] $ sería un dominio euclideo y por lo tanto un D.F.U. y $ K[x,y] $ sería un D.F.U. también por un teorema visto en clase. Por lo tanto, $ y^2 -f(x)$ también es primo y entonces $ K[x,y]/\langle y^2-f(x)\rangle\nonumber $ es un dominio.
 \end{proof}
 
 \item Sea $ R $ un dominio con cuerpo de fracciones $ K $. El anillo $ R $ se llama integralmente cerrado si todo $ r \in K
@@ -95,7 +95,7 @@ Tome $  p(x)  $ un polinomio mónico en $ R[x] $ y supongamos que $ r \in K $ es
 \begin{proof}
 Sea $ R = \mathbb{C}[x]\mathbb{C}[x,y]/\langle y^2-x^3\rangle $
 
-$ x^3 $ no es cuadrado perfecto en $ \mathbb{C}[x] $. Por lo tanto, el punto 4 nos permite concluir que $ R $ es un dominio. Notese que $ x^3 \equiv y^2 $ mod $ \langle y^2-x^3\rangle$. Ahora para demostrar que no es integralmente cerrado tomese el polinomio mónico $ z^2-x $. Este polinomio es irreducible en $ R[z] $ pues claramente $x$ no es un cuadrado perfecto de $ R $. Pero si tomamos $ K[z] $ donde $ K $ es el campo de fracciones de $ R $. Entonces $ y/x  \in K$ sería una raiz del polinomio. En efecto $ (y/x)^2 -x = y^2/x^2-x$, pero $ y^2 = x^3 $, por lo tanto, $ y^2/x^2-x = x^3/x^2-x=x-x=0 $. Esto demuestra que $ R $ no es un integralmente cerrado.
+$ x^3 $ no es cuadrado perfecto en $ \mathbb{C}[x] $. Por lo tanto, el punto 4 nos permite concluir que $ R $ es un dominio. Notese que $ x^3 \equiv y^2 $ mod $ \langle y^2-x^3\rangle$. Ahora para demostrar que no es integralmente cerrado tomese el polinomio mónico $ z^2-x $. Este polinomio es irreducible en $ R[z] $ pues claramente $x$ no es un cuadrado perfecto de $ R $. Pero si tomamos $ K[z] $ donde $ K $ es el campo de fracciones de $ R $. Entonces $ y/x  \in K$ sería una raiz del polinomio. En efecto $ (y/x)^2 -x = y^2/x^2-x$, pero $ y^2 = x^3 $, por lo tanto, $ y^2/x^2-x = x^3/x^2-x=x-x=0 $. Esto demuestra que $ R $ no es integralmente cerrado.
 \end{proof}
 
 \item  Sean $ m $ y $ n $ enteros positivos y suponga que $ m $ no es una potencia $ n $-ésima perfecta (por ejemplo 32
@@ -111,13 +111,16 @@ Por el punto a) tenemos que $ \mathbb{Z}[x] $ es integralmente cerrado. Entonces
 \item  Sean $ R $ un anillo conmutativo con identidad, $ M $ un ideal maximal de $ R $ y $ n $ un entero positivo.
 Muestre que $ R/M^n $ es un anillo local.
 
-\item  Sea $ R $ un D.I.P y sea $ I \not = 0 $ un ideal de $ R $. Muestre que $ R/I $ es isomorfo a un producto finito de
-anillos locales.
 \begin{proof}
 Por un punto realizado en una tarea anterior tenemos que si $ N $ es un ideal máximal en $ R/M^n $ entonces $N^*=\pi^{-1}(N)$ es un ideal máximal en $ R $ donde $ \pi $ es el homomorfismo natural entre $ R  $ y $ R/M^n $ que claramente es sobreyectivo.
 
 Pero vemos que $M^n \subseteq N^* $ y que además como $ N^* $ es máximal entonces es primo. Ahora por un teorema visto en clase concluimos que $ M  \subseteq N^* $ o que $ M^{n-1} \subseteq N^*$. Repitiendo este proceso $ n $ veces llegamos a que $ M  \subseteq N^* $. Pero como $M$ es máximal esto significa que $ N^* $ debe ser igual a $ M $. Por lo tanto, $ M/M^n $ es el único ideal máximal de $ R/M^n $, es decir que es un anillo local.
 \end{proof}
+
+\item  Sea $ R $ un D.I.P y sea $ I \not = 0 $ un ideal de $ R $. Muestre que $ R/I $ es isomorfo a un producto finito de
+anillos locales.
+
+
 \begin{proof}
 En primer lugar, como $ R $ es un D.I.P también es un D.F.U. Si $I=(1)$ no hay nada que demostrar pues $ R/I = \{0\}$ es trivialmente un anillo local. Entonces, sea $ I = (\alpha) $ y sea $ \pi_1^{\alpha_1} \cdots \pi_n^{\alpha_n} $ la factorización de $ \alpha $ en irreducibles. Como $ \pi_i $ es irreducible entonces es primo, pero además como estamos en un D.I.P primo implica maximal. Luego cada $ (\pi_i) $ es máximal. Además $ (\pi_i^{\alpha_i}) $ y $ (\pi_j^{\alpha_j}) $ son comaximales pues sus generadores no tienen factores irreducibles en común. Luego por el teorema chino del residuo tenemos que $ R/I \cong R/(\pi_1^{\alpha_1}) \times \cdots \times R/(\pi_n^{\alpha_n})$ donde cada $ R/(\pi_i^{\alpha_i}) $ es un anillo local por el punto a).
 \end{proof}
