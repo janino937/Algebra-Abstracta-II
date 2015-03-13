@@ -12,28 +12,79 @@
 \usepackage{enumerate}
 \usepackage{enumitem}
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
-\title{Topología: Tarea \#7}
+\title{Algebra Abstracta: Tarea \#7}
 \newtheorem{theo}{Teorema}
 \newtheorem{lemma}[theo]{Lema}
 \newtheorem*{defi}{Definición}
 \author{Jonathan Andrés Niño Cortés}
 \begin{document}
 \maketitle
-\textbf{Sección 10.2} \textbf{4.} Sea $ A $ cualquier $ \mathbb{Z} $-módulo, sea $ a $ cualquier elemento de $ A $ y sea $ n $ un entero positivo. Pruebe que el mapa $ \varphi_a: \mathbb{Z}/n\mathbb{Z} \to A $ dado por $ \varphi(\overline{k}) = ka $ es un homomorfismo de $ \mathbb{Z} $-módulos si y solo $ na = 0 $. Pruebe que $ \text{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z}, A) \cong A_n $, donde $ A_n = \{ a \in A \,|\, na = 0\}$ (de tal manera que $ A_n $ es el aniquilador de $ A $ del ideal $ (n) $ de $ \mathbb{Z} $).
+\textbf{Sección 10.2} \textbf{4.} Sea $ A $ cualquier $ \mathbb{Z} $-módulo, sea $ a $ cualquier elemento de $ A $ y sea $ n $ un entero positivo. Pruebe que el mapa $ \varphi_a: \mathbb{Z}/n\mathbb{Z} \to A $ dado por $ \varphi(\overline{k}) = ka $ es un homomorfismo de $ \mathbb{Z} $-módulos si y solo $ na = 0 $. Pruebe que $ \text{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z}, A) \cong A_n $, donde $ A_n = \{ a \in A \,|\, na = 0\}$ (de tal manera que $ A_n $ es el aniquilador en $ A $ del ideal $ (n) $ de $ \mathbb{Z} $).
+
+\begin{proof}
+Una dirección es sencilla. Si suponemos que $ an \not = 0 $, entonces $ \varphi_a $ no estaría bien definida. Por ejemplo, tenemos que $ \overline{0} = \overline{n} $, pero $ \varphi_a(\overline{n})= an \not = 0 = \varphi_a(\overline{0}) $, por lo que la función no esta bien definida.
+
+Para la otra dirección supongase que $ an = 0 $. En primer lugar $ \varphi_a $ esta bien definida. Si $ \overline{x} = \overline{y} $ entonces $ x = y+nk $ para algún $ k \in \mathbb{Z} $. Luego $ \varphi_a{\overline{x}}=xa = (y+nk)a = ya +nka = ya +k0 = ya = \varphi_a(\overline{y}) $.
+
+Finalmente, para probar que es un homomorfismo nótese que para todo $ \overline{x}, \overline{y} \in \mathbb{Z}/n\mathbb{Z} $ y para cualquier $ r \in  \mathbb{Z}$ tenemos que $ \varphi_a(r\overline{x}+\overline{y}) = (\varphi_a(\overline{rx+y})) = (rx+y)a = rxa + ya = r\varphi_a(\overline{x})+\varphi_a(\overline{y})$.
+
+Ahora para probar que $ \text{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},A) \cong A_n $ vamos a demostrar que $ \psi: \text{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},A) \to A_n  $ tal que $ \psi(\phi) = \phi(\overline{1}) $ es un homomorfismo biyectivo.
+
+Primero obsérvese que para cualquier homomorfismo $ \phi $ entre $ \mathbb{Z}/n\mathbb{Z} $ y $ A $ tenemos que $ \phi(\overline{1}) \in A_n $. Esto se debe a que $ n\phi(\overline{1})=\phi(n\overline{1})=\phi(\overline{n})=0 $. Por lo tanto se puede ver que la función esta bien definida.
+
+Ahora para probar que es un homomorfismo nótese que $ \psi(r\phi_1+\phi_2)= (r\phi_1+\phi_2)(\overline{1})=r\phi_1(\overline{1})+\phi_2(\overline{1}) = r \psi(\phi_1)+\psi(\phi_2)$.
+
+Para probar que es inyectivo, observese que si $ \phi_1(\overline{1}) = \phi_2(\overline{1}) $, entonces $ \phi_1(\overline{x})=\phi_1(x\overline{1})=x\phi_1(\overline{1})=x\phi_2(\overline{1})=\phi_2(\overline{x}) $, por lo que los dos homomorfismos serían iguales.
+
+Por último, $ \psi $ es sobreyectiva por la primera parte de la demostración pues para cualquier $ a \in A_n $ $ \phi_a $ es un homomorfismo tal que $ \phi_a(\overline{1})=1a = a $.
+
+\end{proof}
 
 \textbf{Sección 10.2} \textbf{8.} Sea $ \varphi: M \to N $ un homomorfismo de $ R $-módulos. Pruebe que $ \varphi(\text{Tor}(M)) \subseteq \text{Tor}(N)$.
 
+\begin{proof}
+Tome un elemento $ a = \varphi(b) \in \varphi(\text{Tor}(M)) $. Entonces por definición tenemos que existe $ r \in R $ distinto de 0 tal que $ rb = 0 $. Entonces si tomamos $ ra = r\varphi(b)=\varphi(rb)=\varphi(0)=0 $, por lo que $ a \in \text{Tor}(N) $.
+\end{proof}
+
 \textbf{Sección 10.3} \textbf{10.} Asuma que $ R $ es conmutativo. Muestre que un $ R $-módulo es irreducible si y sólo si $ M $ es isomórfico (como un $ R $-módulo) a $ R/I $ donde $ I $ es un ideal máximal de $ R $. [Por el ejercicio previo, si $ M $ es irreducible entonces hay un mapa natural $ R \to M  $ definido por $ r \to rm  $, ,donde $ m $ es cualquier elemento no cero fijo de $ M $].
 
+\begin{proof}
+Para una dirección supongase que $ M $ es isomorfo a $ R/I $ (como submódulo) donde $ I $ es un ideal máximal. Vamos a demostrar que si $ N \leq R/I $ entonces $ N $ debe ser un ideal de $ R/I $.
+Que es un subgrupo aditivo ya esta dado por la definición de sub-módulo. Además, si tomamos cualquier $ r + I \in R/I $ y cualquier $ n + I \in N $ vemos que $ (r + I)(n+I)=rn+I $, pero como $ r \in R $ y $ N $ es submódulo concluimos que $ r(n+I) =rn+I \in N$. Por lo tanto, $ N $ es un ideal. Pero si $ I $ es máximal entonces $ R/I $ sería un campo y en un campo el único ideal propio es $ \{0\} $. Por lo tanto, $ M $ es irreducible.
+
+Ahora para probar la otra dirección suponga que $ R $ es irreducible. Por el punto anterior si fijamos un elemento no cero $ m \in M $, tenemos que existe un homomorfismo natural $\phi: R \to M $ tal que $ r \mapsto rm $. Este homomorfismo se puede ver como un homomorfismo de submódulos. Es sobreyectivo porque $ M = Rm $. Entonces por el primer teorema del isomorfismo $ M \cong R/\text{ker}(\phi) $. Pero además tenemos que $ \text{ker}(\phi) $ debe ser máximal. Si no lo fuera entonces existiria algún ideal propio de $ R $, $ K $ tal que $\text{ker}(\phi)\subsetneq K $. Pero $ K $ es un submódulo de $ R $ visto como $ R $-módulo. Entonces por el teorema de la correspondencia existiría un submódulo propio $ K ' $ de $ M $ tal que $ \{0\} \subsetneq K' $. Lo que contradice el hecho que $ M $ sea irreducible.    
+\end{proof}
+
 \textbf{Sección 10.3} \textbf{18.}
-Sea $ R $ un dominio de ideal principal y sea $ M $ un $ R $-módulo que es aniquilado por el ideal propio no cero $ (a) $. Sea $ a = p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_n^{\alpha_n} $ la factorización única de $ a $ en potencias de primos distintas en $ R $. Sea $ M_i $ el aniquilador de $ p_i^{\alpha_i} $ en $ M $, i.e., $ M_i $ es el conjunto $ \{ m \in M \,|\,p_i^{\alpha_i}m=0 \} $ --- llamado el \textit{componente $ p_i $-primario de $ M $}. Pruebe que
+Sea $ R $ un dominio de ideales principales y sea $ M $ un $ R $-módulo que es aniquilado por el ideal propio no cero $ (n) $. Sea $ n = p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k} $ la factorización única de $ a $ en potencias de primos distintas en $ R $. Sea $ M_i $ el aniquilador de $ p_i^{\alpha_i} $ en $ M $, i.e., $ M_i $ es el conjunto $ \{ m \in M \,|\,p_i^{\alpha_i}m=0 \} $ --- llamado el \textit{componente $ p_i $-primario de $ M $}. Pruebe que
 \begin{equation}
 M = M_1 \oplus M_2 \oplus \cdots \oplus M_k. \nonumber
 \end{equation}
+\begin{proof}
+Primero probemos que la suma directa da todo el módulo.
+
+Tome cualquier $m \in M$. Sabemos que   $ (p_1^{\alpha_1}) $ y $ (p_2^{\alpha_2} \cdots p_{k}^{\alpha_k} ) $ son comáximales. Entonces existe $ a,b $ tales que  $ a \in(p_1^{\alpha_1}) $ y $ b \in (p_2^{\alpha_2} \cdots p_{k}^{\alpha_k} )$ y $ a+b = 1 $. Luego $ m = (a+b)m = am+bm $. Y tenemos que $ bm = sp_2^{\alpha_2} \cdots p_{k}^{\alpha_k}m $ por lo que al multiplicar por $ p_1^{\alpha_1} $, $ bm = snm = s0 = 0 $, es decir que $ bm \in M_1 $. Además podemos encontrar $ c $ y $ d $ tales que  $ c \in(p_2^{\alpha_2}) $ y $ d \in (p_3^{\alpha_3} \cdots p_{j-1}^{\alpha_{j-1}}\cdots p_{k}^{\alpha_k})$ y $ c+d = 1 $. Luego $ am = (c+d)(am)=cam+dam$ y tenemos que $ dam \in M_2 $ pues $ p_2^{\alpha_2}dam = rr'nm = rr'0 = 0$. Repitiendo este proceso $ n $ veces obtendremos $n+1$ términos donde los primeros $ n $ términos perteneces a cada $ M_i $. Sin enmbargo el ultimo término es de la forma $ ace \cdots xm$ y como ya se se recorrieron todos las potencias de primos concluimos que $ ace \cdots x \in (a)$ luego este último término es igual a 0. 
+
+Ahora probemos que cumple las condiciones para que sea una suma directa.
+
+Ahora es facíl ver que  $M_1 \oplus \cdots \oplus M_{j-1} \oplus M_{j+1} \oplus \cdots \oplus M_k$ es aniquilado por $ (p_1^{\alpha_1} \cdots p_{j-1}^{\alpha_{j-1}}\cdots p_{k}^{\alpha_k} ) $. Como $ (p_i^{\alpha_i}) $ y $ (p_1^{\alpha_1} \cdots p_{j-1}^{\alpha_{j-1}}\cdots p_{k}^{\alpha_k} ) $ son comáximales tenemos que existe $ a \in(p_i^{\alpha_i}) $ y $ b \in (p_1^{\alpha_1} \cdots p_{j-1}^{\alpha_{j-1}}\cdots p_{k}^{\alpha_k} )$ elementos tales que $ a+b=1 $. Luego $ m = (a+b)m = am+ bm = rp_j^{\alpha_j}m+sp_1^{\alpha_1} \cdots p_{j-1}^{\alpha_{j-1}}\cdots p_{k}^{\alpha_k}m $ que es igual por nuestra suposición a $ r(0)+s(0) = 0 $.
+
+ 
+\end{proof}
 
 \textbf{Sección 12.1} \textbf{13.} Si $ M $ es un módulo finitamente generado sobre el Dominio de Ideales Principales $ R $, describa la estructura de $ M/\text{Tor}(M) $.
 
-\textbf{Sección 12.1} \textbf{13.} Sea $ R $ un D.I.P. y sea $ M $ un $ R $-módulo de torsión. Pruebe que $ M $ es irreducible si y sólo si $ M = Rm $ para cualquier elemento no cero $ m \in M $ donde el aniquilador de $ m $ es un ideal principal no cero $ (p) $. 
+\begin{proof}
+Este es precisamente el componente libre de $ M $.
+Por la primera parte del teorema fundamental probada en esta sección tenemos que $M \cong R^n \oplus \text{Tor}(M) $. Entonces por el segundo teorema del isomorfismo tenemos que  $M \cong R^n \oplus \text{Tor}(M)/\text{Tor}(M) \cong R^n/(R^n \cap \text{Tor}(M)) $. Pero $ R^n \cap \text{Tor}(M) = \{0\} $ porque la suma es directa. Luego $  R^n/(R^n \cap \text{Tor}(M) \cong R^{n}/\{0\}  \cong R^n$. 
+\end{proof}
 
+\textbf{Sección 12.1} \textbf{14.} Sea $ R $ un D.I.P. y sea $ M $ un $ R $-módulo de torsión. Pruebe que $ M $ es irreducible si y sólo si $ M = Rm $ para cualquier elemento no cero $ m \in M $ donde el aniquilador de $ m $ es un ideal primo no cero $ (p) $.
+
+\begin{proof}
+Una dirección esta dada por el Punto 3 de esta tarea. Si $ M $ es irreducible entonces es isomorfo a $ R/I $ para algún ideal $ I $ máximal de $R$. Además como $I$ máximal es primo y como estamos en un D.I.P. tenemos que $ I  = (p) $, donde $ p $ es un elemento primo de $ R $. Además vemos que $ (p) $ es el anulador de $M$. Entonces si tomamos cualquier $m \in M $ distinto de 0 vemos que $ Rm = M$. Si ese no fuera el caso entonces tendriamos que $ Rm \subsetneq M $ y $Rm$ es diferente al submódulo trivial porque $ m  = 1m \in Rm $, por lo que $ M $ no sería irreducible.
+
+Para la otra dirección si tomamos cualquier $ m $ diferente a 0 tenemos un homomorfismo sobreyectivo natural entre $ R $ y $ Rm = M $. Además claramente el kernel de este homomorfismo es por definición el anulador de $ m $, que es igual a $ (p) $. Pero como $ (p) $ es primo es máximal y entonces por el primer teorema del isomorfismo $ M \cong R/(p) $. Luego por el tercer punto $ M $ es irreducible. Luego $ M \cong R/(p) $ y como $ p $ es primo y estamos en un D.I.P concluimos que $ (p) $ es máximal. Entonces por el punto 3 $ M $ es irreducible.
+ \end{proof}
 
 \end{document}
