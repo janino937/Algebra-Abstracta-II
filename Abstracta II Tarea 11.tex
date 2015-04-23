@@ -1,0 +1,196 @@
+\documentclass[letter,twoside,12pt]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{fullpage}
+\usepackage{latexsym}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\title{Algebra Abstracta: Tarea \#11}
+\newtheorem{lemma}{Lema}
+\author{Jonathan Andrés Niño Cortés}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item \begin{enumerate}
+\item Muestre que el polinomio $ x^3 - 3x + 1 \in \mathbb{Q}[x] $ es irreducible
+
+\begin{proof}
+
+Sea $ p(x) = x^3-3x+1$.
+Por el Lema de Gauss tenemos que si el polinomio es irreducible en $ \mathbb{Z} $ entonces es irreducible en $ \mathbb{Q} $.Ahora para demostrar que es irreducible en $ \mathbb{Z} $ como el polinomio es mónico basta demostrar que el polinomio es irreducible en $ (\mathbb{Z}/2\mathbb{Z})[x] $. Como el polinomio es de grado 3, ser irreducible es equivalente a no tener una raíz. El polinomio reducido es $ p(x)=x^3+x+1 $ y vemos que $ p(0)=1 $ y $ p(1)=1 $. Por lo tanto, no tiene raices, es irreducible es $ \mathbb{Z}/2\mathbb{Z}[x] $ y por lo es irreducible en $ \mathbb{Z} $ y en $ \mathbb{Q} $.
+\end{proof}
+
+\item Utilice la identidad trigonométrica $ \cos(3\theta) = 4 \cos^3(\theta)-3 \cos(\theta) $ para verificar que $ 2\displaystyle\cos\Big(\frac{2\pi}{9}\Big) $ es una raíz de $ x^3 - 3x + 1 $.
+
+\begin{proof}
+Evaluemos $ \displaystyle p\Big(2\cos\Big(\frac{2\pi}{9}\Big)\Big)$.
+
+\begin{eqnarray}
+p\Big(2\cos\Big(\frac{2\pi}{9}\Big)\Big)&=&8\cos\Big(\frac{2\pi}{9}\Big)^3-6\cos\Big(\frac{2\pi}{9}\Big)+1\nonumber
+\\&=&2(4\cos^3\Big(\frac{2\pi}{9}\Big)-3\cos\Big(\frac{2\pi}{9}\Big))+1\nonumber
+\end{eqnarray}
+
+Entonces por identidad trigonométrica en el enunciado tenemos que $ \displaystyle 4\cos^3\Big(\frac{2\pi}{9}\Big)-3\cos\Big(\frac{2\pi}{9}\Big)= \cos\Big(\frac{2\pi}{3}\Big)=-\frac{1}{2} $.
+
+Luego,
+
+\begin{eqnarray}
+p\Big(2\cos\Big(\frac{2\pi}{9}\Big)\Big)&=&2(\cos\Big(\frac{2\pi}{3}\Big))+1\nonumber
+\\&=& 2(-\frac{1}{2})+1 \nonumber
+\\&=&0 \nonumber
+\end{eqnarray}
+\end{proof}
+
+\item Muestre que el poligono regular de 9 lados, Eneágono, no se puede construir con regla y compas. Equivalentemente el ángulo $ \frac{2\pi}{3} $ no puede ser trisecado.
+
+\begin{proof}
+Los dos puntos anteriores nos permiten concluir que $ \alpha = 2\cos\Big(\frac{2\pi}{9}\Big) \not \in \mathbb{Q} $ porque es una raíz del polinomio pero ya vimos que este polinomio no tiene ráices en $ \mathbb{Q} $.
+
+Por lo tanto tenemos que $ [\mathbb{Q}(\alpha):\mathbb{Q}]=3 $. Pero esto implica que el punto no puede contruirse con regla y compas, porque no es posible que ella una cadena de extensiones de grado 2 entre esta extensión y $ \mathbb{Q} $.
+\end{proof}
+\end{enumerate}
+
+\item Sea $ K $ un cuerpo algebraicamente cerrado. Muestre que $ K $ es infinito.
+\begin{proof}
+Vamos a demostrar que níngun cuerpo finito puede ser algebraicamente cerrado. Suponga por contradicción que hay un campo finito $ F $ de tamaño $ n $ algebraicamente cerrado. Si es finito entonces su caracteristica es $ p>0 $ porque si su caracteristica fuera cero entonces necesariamente sería infinito.
+
+Entonces considere el polinomio $ P(x)=(x-\alpha_0)(x-\alpha_1)\cdots(x-\alpha_n)+1 $, donde $ \alpha_i $ es el elemento $ i $ del campo. Este polinomio no tiene ninguna raíz porque si evaluamos en cualquier elemento de $ \alpha \in F $ tenemos que $ P(\alpha)=0+1=1 $. Pero esto es una contradicción porque si $ F $ fuera algebraicamente cerrado todo polinomio de grado > 0 deberia tener una raiz.
+\end{proof}
+\item Sea $ K $ un cuerpo de característica $ p > 0 $. Muestre que la función Frob$ _p  : K \to K $ definida por $ x \mapsto x^p $ es
+un monomorfismo de anillos. A éste homorfismo se le conoce como el homomorfismo de Frobenious.
+
+\begin{proof}
+Primero probemos que $ \text{Frob}_p $ es un homomorfismo.
+\begin{equation}
+\text{Frob}_p(x+y)=(x+y)^p=\sum_{k=0}^p \binom{p}{k}x^ky^{p-k}. \nonumber
+\end{equation}
+
+Pero si $ 0<k<p $ entonces $ p|\binom{p}{k} $.
+
+Por la definición del coeficiente binomial tenemos que $ \binom{p}{k}k!(p-k)!=p! $. Ahora vamos a probar que $ p $ es primo relativo con $ k!(p-k)! $ porque la restricción sobre $ k $ asegura que tanto $ k $ como $ p-k $ son menores estrictamente a $ p $. Y por lo tanto como todo número menor a $ p $ es primo relativo con $ p $ se cumple que tanto $ k! $ como $ (p-k)! $ son primos relativos con $ p $ y luego $ (p-k)!k! $ es primo relativo con $ p $. Ahora claramente $ p|p! $, luego concluimos que $ p|\binom{p}{k} $. Pero como el cuerpo es de caracteristica $ p $ tenemos que $ p = 0 $, por lo tanto
+
+\begin{eqnarray}
+\text{Frob}_p(x+y)&=&\sum_{k=0}^p \binom{p}{k}x^{p-k}y^k. \nonumber
+\\&=&\binom{p}{0}x^p+\binom{p}{p}y^p\nonumber
+\\&=&x^p+y^p \nonumber
+\\&=& \text{Frob}_p(x)+\text{Frob}_p(y) \nonumber
+\end{eqnarray}
+
+Por otra parte $ \text{Frob}_p(xy)= (xy)^p  $, pero como en un campo la multiplicación es conmutativa tenemos que $ (xy)^p = x^py^p = \text{Frob}_p(x)\text{Frob}_p(y) $.
+
+Ahora para probar que es inyectivo solo basta demostrar que el homomorfismo es diferente del homomorfismo 0, pues estamos en un campo y este es el caso porque por ejemplo si consideramos el elemento 1, $ \text{Frob}_p(1)=1^p=1 $.
+\end{proof}
+
+\item Sea $ p $ un primo y sea $ \mathbb{F}_p $ el cuerpo de $ p $ elementos. Sea $ n $ un entero positivo y sea $ f_n(x) := x^{p^n}-x \in \mathbb{F}_p[x] $.
+
+\begin{enumerate}
+\item Muestre que $ f_n(x) $ no tiene raíces repetidas.
+
+\begin{proof}
+Tome la derivada del polinomio $ f_n(x) $.
+
+\begin{equation}
+f'(x)=p^nx^{p^n-1}-1 = -1 \nonumber
+\end{equation}
+
+Lo anterior es porque la caracteristica del polinomio es $ p $, luego $ p^n=0 $. Y como $ f'(x) $ no tiene raíces en particular no hay raices comunes entre $ f(x) $ y $ f'(x) $ y por lo tanto el polinomio $ p(x) $ no tiene raices repetidas.
+\end{proof}
+
+\item Sea $ \mathbb{F}_{p^n} $ el cuerpo de descomposición de $ f_n(x) $ y sea $ S \subseteq \mathbb{F}_{p^n} $ el conjunto de las raíces de $ f_n(x) $.
+Muestre que $ S $ es un cuerpo y concluya que $ S = \mathbb{F}_{p^n} $.
+\begin{proof}
+
+Como primera observación tenemos que $ 1 \in S $ puesto que $ 1^{p^n}=1 $.
+
+Todas las raíces $ \alpha $ de $ f_n $ cumplen que $ \alpha^{p^n}=\alpha $. Para probar que $ S $ es un campo basta probar que para cualesquiera $ \alpha $, $ \beta $ y $ \gamma \in S $, $ \alpha-\beta/\gamma \in S $.
+
+En efecto,  
+\begin{equation}
+(\alpha-\beta/\gamma)^{p^n} = \sum_{i = 0}^{p^n}\binom{p^n}{k}\alpha^{p^n-k}(\beta/\gamma)^{k}
+\end{equation}
+
+Pero por un argumento similar al dado en la demostración del segundo punto todos los coeficientes entre $ 1 $ y $ k-1 $ son divisibles por $ p $ y por lo tanto son iguales a 0. Luego los únicos factores sobrevivientes son los correspondientes a $ 0 $ y a $ p^n $.
+Entonces,
+
+\begin{eqnarray}
+(\alpha-\beta/\gamma)^{p^n} &=& \sum_{i = 0}^{p^n}\binom{p^n}{k}\alpha^{p^n-k}(-\beta/\gamma)^{k} \nonumber
+\\ &=& \alpha^{p^n}+(-\beta/\gamma)^{p^n} \nonumber
+\end{eqnarray}
+
+Ahora, debemos considerar dos casos. Si $ p $ es impar entonces $ (-\beta/\gamma)^{p^n} = -(\beta/\gamma)^{p^n}$.
+Si $ p = 2 $ entonces $ (-\beta/\gamma)^{p^n} = (\beta/\gamma)^{p^n}$. Sin embargo como la característica del campo es dos tenemos que $ -1 = 1 $, pues $ 1+1 =0 $. Por lo tanto, en ambos casos $ (-\beta/\gamma)^{p^n} = -(\beta/\gamma)^{p^n}$.
+
+Finalmente por nuestra suposición que $ \alpha $, $ \beta $ y $ \gamma $ son raices tenemos que $ \alpha^{p^n}=\alpha $, $ \beta^{p^n}=\beta $ y $ \gamma^{p^n}=\gamma $.
+
+Por lo tanto,
+
+\begin{eqnarray}
+(\alpha-\beta/\gamma)^{p^n} &=& \alpha^{p^n}+(-\beta/\gamma)^{p^n} \nonumber
+\\&=& \alpha^{p^n}-(\beta/\gamma)^{p^n} \nonumber
+\\&=& \alpha^{p^n}-\beta^{p^n}/\gamma^{p^n} \nonumber
+\\&=& \alpha-\beta/\gamma \nonumber
+\end{eqnarray}
+
+Que era el resultado que estabamos buscando. Por lo tanto $ S $ es un campo y como contiene a todas las raices del polinomo $ f_n(x) $ entonces debe coincidir con el campo de descomposición $ \mathbb{F}_{p^n} $ puesto que por definición es el mínimo campo que contiene a todas las raíces del polinomio dado.
+\end{proof}
+\item Muestre que $ |\mathbb{F}{p^n}| = p^n $ y que más aun $ F_{p^n} $ es el único cuerpo, módulo isomorfismo, con esta cardinalidad.
+En otras palabras muestre que si $ L $ es un cuerpo tal que $ |L| = p_n $ entonces $ F_{p^n} \cong
+L $.
+
+\begin{proof}
+Como el polinomio no tiene raíces repetidas su número de raíces es igual a su grado, es decir, $ |\mathbb{F}^{p^n}| =p^n$. Ahora para demostrar que cualquier otro campo $ L $ con tamaño $ p^n $ es esencialmente el mismo campo solo basta demostrar que para cualquier $ \alpha \in L $ se cumple que $ (\alpha)^{p^n}=\alpha $.
+
+Debemos considerar dos casos. Si $ \alpha=0 $ entonces $ 0^{p^n} = 0 $. Si $ \alpha \not  = 0 $ entonces $ \alpha \in L^* $. Ya tenemos un teorema que nos dice que $ L^* $ es un grupo cíclico de tamaño $ p^n-1 $. Por lo tanto, por el teorema de Lagrange tenemos que $ \alpha^{p^n-1}=1 $. Finalmente multiplicando por $ \alpha $ a ambos lados obtenemos la expresión deseada.
+\end{proof}
+
+(\textit{Sugerencia: Muestre que si $ \alpha \in L $ entonces $ (\alpha)^{p^n}= \alpha $})
+\end{enumerate}
+
+\item Sea $ K $ un cuerpo tal que $ K $ tiene característica 0 o $ K $ es finito. Muestre que $ K $ es perfecto. (Recuerde
+que un cuerpo es \textit{perfecto} si cualquier extensión finita es separable.)
+
+\begin{proof}
+En el primer caso, si $ K $ tiene característica 0, entonces tome $ L $ una extensión finita de $ K $. Por una tarea anterior finita implica algebraica. Entonces cada elemento  de $ L $ tiene asociado un polinomio irreducible de grado $ \geq $ 1 en $ K $. Entonces podemos utilizar el criterio de la derivada para demostrar que todos estos polinomios irreducibles asociados a cada elemento son separables. Sea $ \alpha \in L $ y sea $ p(x) \in K[x] $ tal que $ p(\alpha)=0 $. Si tomamos $ p'(x) $ obtenemos un polinomio de un grado menor y tal que es diferente de 0, pues ninguno de los coeficientes se cancelan como en el caso de caracteristica $ p $.
+
+Entonces como $ p(x) $ es irreducible esto implica que al tomar el g.c.d con $ p'(x) $ que es un grado menor y por lo tanto diferente de $ p(x) $ concluimos que el g.c.d. es igual 1, porque de lo contrario el g.c.d sería un factor de grado >0 y diferente de $ p(x) $ que divide a $ p(x) $ y por lo tanto $ p(x) $ no sería irreducible.
+
+Ahora para el caso en que el campo es de característica $ p $ tenemos que si el campo $ K $ es finito entonces cualquier extensión $ L $ finita tiene un número finito de elementos. Pero en una tarea anterior demostramos que si $ L $ es finito entonces su cardinalidad es igual a $ p^n $ para algún $ n \in \mathbb{N} $. Pero entonces por el punto anterior $ L $ sería el cuerpo de descomposición del polinomio $ x^{p^n}-x $. Concluimos entonces que es separable.
+\end{proof}
+
+\item Sea $ \alpha \in \mathbb{R} $ definido como $ \alpha := \displaystyle\sum_{i \geq 0}\frac{1}{10^{i!}} $. Utilice el siguiente Teorema de Liouville para mostrar que $ \alpha $ es
+transcendente sobre $ \mathbb{Q} $: (\textit{Sugerencia: Muestre que para todo entero $ N > 0 $ existen $ p, q \in \mathbb{Z} $ con $ q > 1 $ tales
+que $\displaystyle  0 < \Big|\alpha - \frac{p}{q}\Big|<\frac{1}{q^N}$}).
+
+\begin{proof}
+Sea $ N \in \mathbb{N} $ tal que $ N>0 $ y considere la suma finita $ \displaystyle \sum_{i=0}^N \frac{1}{10^{i!}} $. Como es una suma finita de racionales esta suma es racional. De hecho podemos escribirla de la forma $ p/q $ con $ p,q \in \mathbb{Z} $ como
+
+\begin{equation}
+\sum_{i=0}^N \frac{1}{10^{i!}} = \frac{\sum_{i=0}^N 10^{N!-i!}} {10^{N!}}. \nonumber.
+\end{equation}
+
+Ahora tenemos que $ \displaystyle \sum_{i=0}^\infty \frac{1}{10^{i!}}-\sum_{i=0}^N \frac{1}{10^{i!}}=\sum_{i=N+1}^\infty \frac{1}{10^{i!}} $.
+
+Si consideramos esta serie como una expansión decimal de $ \alpha $ es fácil ver que 
+\begin{equation}
+0< \sum_{i=N+1}^\infty \nonumber\frac{1}{10^{i!}} < \frac{2}{10^{(N+1)!}}.
+\end{equation}
+
+Ahora tenemos que $ (N+1)!=N!(N+1)=N!N+N! $. Por lo tanto $ 10^{(N+1)!}=(10^{N!})^N10^{N!} $. Además, si $ N > 0 $ tenemos que $ 10^{N!}>2 $. Por lo tanto $ (10^{N!})^N10^{N!}>2*(10^{N!})^N $ y luego $ \displaystyle \frac{1}{(10^N!)^N}>\frac{2}{10^{(N+1)!}} $.
+
+Finalmente llegamos a la expresión deseada
+
+\begin{equation}
+0< \sum_{i=N+1}^\infty \nonumber\frac{1}{10^{i!}} = \alpha- \frac{\sum_{i=0}^N 10^{N!-i!}} {10^{N!}} < \frac{1}{10^{(N!)^N}}.
+\end{equation}
+
+Si asumieramos que $ \alpha $ es algebráico entonces esta expresión contradeciría el teorema de Liouville. Por lo tanto, concluimos que $ \alpha $ es trascendente.
+
+\end{proof}
+\end{enumerate}
+\end{document}
