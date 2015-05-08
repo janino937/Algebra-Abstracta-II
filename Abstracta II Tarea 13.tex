@@ -1,0 +1,344 @@
+\documentclass[10pt]{article}
+
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{geometry}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+%\usepackage{kpfonts}%Para incrementar el tama–o de \times
+
+\def\N{{\mathbb N}}
+\def\Z{{\mathbb Z}}
+\def\F{{\mathbb F}}
+\def\Q{{\mathbb Q}}
+\def\R{{\mathbb R}}
+\def\C{{\mathbb C}}
+\def\O{{\mathcal O}}
+
+\theoremstyle{plain}
+
+
+
+% Commands to format the margins
+\setlength{\topmargin}{-.6in}
+\addtolength{\textheight}{1.7in}
+\setlength{\oddsidemargin}{.00in}
+\addtolength{\textwidth}{.75in}
+
+% Command to include various LaTeX packages
+
+% Command to prevent auxiliary files from being created when compiling
+%\nofiles
+
+% Command to prevent the pages from being numbered
+\pagestyle{empty}
+
+% Command to set the paragraph indentation to zero (i.e. none)
+%\setlength{\parindent}{0in}
+
+% Commands that allow both quiz and solution versions to be created
+\newif \ifanswer
+\newcommand{\question}[1]{\ifanswer {\em #1} \else {#1} \fi}
+\newcommand{\questiononly}[1]{\ifanswer \else #1 \fi}
+\newcommand{\answer}[1]
+        {\ifanswer \else \color{white} \fi #1 \color{black}}
+\newcommand{\answeronly}[1]{\ifanswer #1 \fi}
+%\newtheorem*{theorem*}{Theorem}
+\newtheorem*{theorem*}{Teorema}
+
+% Commands to set whether the quiz or solution is being created
+%   If you want to create the quiz, comment out the first line but not
+%   the second.
+%   If you want to create the solutions, comment out the second line
+%   but not the first.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\answertrue
+%\answerfalse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% A header line
+
+
+\noindent {\sc \'Algebra abstracta II
+            \hfill
+            \hfill  Abril 26 2015}
+
+\noindent {\sc Nombre/C\'odigo: Jonathan Andrés Niño Cortés/201013421 \hfill Guillermo Mantilla}
+
+\hrulefill
+
+%\bigskip
+
+\centerline{\sc Tarea 13}
+
+\bigskip
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{enumerate}
+
+
+\item[{\bf 1.}] Sea $R:=\Q[x_{1},...,x_{n}]$ el anillo polinomial sobre $\Q$ en las variables $x_{i}$ y sea $L$ su cuerpo cociente. Los {\it polinomios sim\'etricos elementales son los elementos $s_{1},...,s_{n} \in R$} definidos por:
+
+\begin{eqnarray*} s_{1} & := & x_{1}+...+x_{n},\\ s_{2} & := & \sum_{1\leq i < j \leq n} x_{i}x_{j},\\ & \vdots & \\ s_{r} & := & \sum_{1\leq i_{1} < i_{2}<...<i_{r} \leq n}x_{i_{1}}x_{i_{2}}...x_{i_{r}} \\ & \vdots & \\ s_{n} & := & x_{1}x_{2}...x_{n}.  \end{eqnarray*}
+
+\begin{itemize}
+
+\item[$\bullet$] Sea $p(x) \in R[x]$ definido por $\displaystyle p(x)=(x-x_{1})(x-x_{2})...(x-x_{n})$. Muestre que \[p(x)=x^{n}-s_{1}x^{n-1}+...+(-1)^{r}s_{r}x^{n-r}+...+(-1)^{n}s_{n}.\]
+
+\begin{proof}
+Podemos probar esto por inducción sobre el grado del polinomio. Primero, para el caso base observese que si $ n=1 $ entonces $ p(x)=(x-x_1) $ y $ s_1 = x_1 $ por lo que $ f(x)=x-s_1 $.
+
+Ahora para el paso inductivo suponga que el enunciado vale para $ n $ y queremos demostrar que vale para $ n+1 $. Entonces tome $ f(x) $ un polinomio de grado $ n+1 $. Por nuestra hipotesis de inducción este polinomio es igual a 
+
+\begin{eqnarray*}
+f(x)&=&(x^{n}-s_{1}x^{n-1}+...+(-1)^{r}s_{r}x^{n-r}+...+(-1)^{n}s_{n})(x-x_{n+1}) \nonumber
+\\&=& x^{n+1}-s_1x^n-x_{n+1}x^n + \cdots + (-1)^{r}s_{r}x^{n-r+1}-(-1)^{r-1}s_{r-1}x^{n-r+1}x_{n+1}+ \cdots +(-1)^{n+1}s_nx_{n+1} \nonumber
+ \end{eqnarray*}
+
+Definimos por $ s_i $ los polinomios simétricos elementales de $ \mathbb{Q}[x_1,\cdots,x_n] $ y por $ s'_i $ los polinomios simétricos elementales de $ \mathbb{Q}[x_1,\cdots,x_n,x_{n+1}] $ y además agregamos la convención de que $ s_0 = 1 $. Entonces tenemos que el $ n-1 $-ésimo termino $ x^{n+1} $ y el término constante $ s'_{n+1}=s_nx_{n+1} $ coinciden con la expresión.
+
+
+
+Finalmente necesitamos ver que $ (-1)^{r}s_{r}x^{n-r+1}-(-1)^{r-1}s_{r-1}x^{n-r+1}x_{n+1} = (-1)^rs'_rx^{n-r+1} $. Es decir, que $ (s_{r}+s_{r-1}x_{n+1}) = s'_r $.
+
+Entonces vemos que los términos que deben aparecer en $ s'_r $ son por un lado los elementos que aparecian en $ s_r $ y por otro lado los elementos que aparecen en $ s_{r-1} $ multiplicados por $ x_{n+1} $. Por esta razón, $ s_{r}+s_{r-1}x_{n+1} = s'_r $ y con esto concluimos la demostración.
+
+\end{proof}
+
+\item[$\bullet$] Sea $S \subseteq R$ el subanillo  generado por los polinomios elementales y $\Q$ i.e., $ S:=\Q[s_{1},...,s_{n}]$ y sea $K$ su cuerpo cociente. Muestre que $L/K$ es una extensi\'on de Galois y que 
+\[[L:K] \leq n!\]
+\begin{proof}
+
+La extensión es separable porque estamos sobre un cuerpo de característica 0. Vamos a probar que esta extensión corresponde al cuerpo de partición del polinomio $ f(x)=(x-x_1))(x-x_2) \cdots (x-x_n) $, por lo que la extensión también seria normal y por lo tanto de Galoiss. Por el punto anterior tenemos que este polinomio tiene coeficientes en $ K $. Además cada una de las raices pertenecen a $ L $ pues las raices $ x_1 $ son polinomios que pertenecen a $ \mathbb{Q}[x_1,\cdots x_n] $, pero por definición, este sería el mínimo anillo que contiene a estas raices y $ L $ sería el mínimo campo que las contiene, es decir que $ L $ sería el cuerpo de descomposición. Finalmente, por lo discutido en clase el orden de un cuerpo de descomposición de un polinomio de grado $ n $ es a lo sumo $ n! $. 
+\end{proof}
+
+\item[$\bullet$] Muestre que el grupo sim\'etrico $S_{n}$ actua de manera natural sobre $R$, donde la acci\'on respeta las operaciones de anillo, y que esta acci\'on se extiende a $L$. M\'as aun muestre $K \subseteq {\rm Stab}_{S_{n}}(L)$.\\
+
+\begin{proof}
+La acción de grupo natural es tomar $\phi: S_n \times R \to R  $ como $ \sigma p(x_1,\cdots, x_n) = p(\sigma(x_1),\cdots , \sigma(x_n)) $. Esta acción preserva la suma pues 
+
+$ \sigma(p(x_1,\cdots,x_n)+q(x_1,\cdots,x_n)) = p(\sigma(x_1),\cdots , \sigma(x_n)) + q(\sigma(x_1),\cdots , \sigma(x_n)) = \sigma p(x_1,\cdots,x_n) +\sigma q(x_1,\cdots,x_n) $.
+
+Además preserva la multiplicación pues
+
+ $ \sigma(p(x_1,\cdots,x_n)q(x_1,\cdots,x_n)) = p(\sigma(x_1),\cdots , \sigma(x_n))q(\sigma(x_1),\cdots , \sigma(x_n)) = \sigma p(x_1,\cdots,x_n) \sigma q(x_1,\cdots,x_n) $.
+ 
+ Entonces podemos extender este homomorfismo a $ L $ tomando $ \tilde{\phi}:S_n \times L \to L $, como 
+ $$ \displaystyle \sigma\frac{p(x_1, \cdots, x_n)}{q(x_1, \cdots, x_n)} = \frac{p(\sigma(x_1), \cdots, \sigma(x_n))}{q(\sigma(x_1), \cdots, \sigma(x_n))} $$.
+ 
+ Claramente tenemos que esta es una extensión de la acción anterior y además de la misma manera que en el caso anterior podemos demostrar que la acción preserva la multiplicación y la suma. Por otro lado, tenemos que $ K \subseteq \text{Stab}_{S_n}(L) $. Esto es así porque los polinomios símetricos que generan a $ K $ tienen la propiedad de ser invariantes bajo cualquier permutación, es decir, $ \sigma(s_i)=s_i $ para cualquier $ 0<i\leq n $ y porque la acción preserva la suma y la multiplicación.
+ 
+ 
+\end{proof}
+
+\item[$\bullet$] Deduzca de los dos incisos anteriores que existe un isomorfismo $\displaystyle S_{n} \cong {\rm Gal}(L/K).$ (La extensi\'on $L/K$ se conoce como {\it extensi\'on universal} de grado $n$)\\
+\begin{proof}
+La acción anterior nos permite definir un homomorfismo inyectivo $ S_n \hookrightarrow \text{Gal} $. Tome $ \Psi:\sigma \mapsto \phi_\sigma:r \mapsto \sigma r $, para $ r \in L $. Cada $ \phi_\sigma $ es un automorfismo porque la acción preserva la suma y la multiplicación. Además cada $ \sigma $ da un automorfismo diferente. Para probar esto basta considerar el polinomio $ x_1+x_2^2+\cdots+ x_r^r+\cdots + x_n^n $ y darse cuenta que cualesquiera dos permutaciones diferentes dan un polinomio diferente. Pero por el criterio de casillas tenemos que $ \Psi $ debe ser sobreyectiva porque $ |S_n|=n! $ y $ |\text{Gal}(L/K)|\leq n! $ Por lo tanto $ S_n \cong \text{Gal}(L/K) $.
+\end{proof}
+
+\item[$\bullet$] Sea $G$ un grupo finito. Muestre que existen cuerpos $F/E$, con $F/E$ de Galois, tal que ${\rm Gal}(F/E) \cong G$.\\
+
+\begin{proof}
+La teoría de representación de los grupos simétricos nos dice que si $ G $ es un grupo de orden $ n $ entonces existe un subgrupo $ H $ en $ S_n $ isomorfo a $ G $. Por lo tanto, si tomamos $ R = \mathbb{Q}[x_1,\cdots,x_n] $ y $ L $ su campo de fracción y luego tomamos $ S = \mathbb{Q}[s_1,\cdots,s_n] $ y $ K $ su campo de fracciones, entonces tendriamos que $ \text{Gal}(L/K) \cong S_n $ por el punto anterior y luego por el teorema fundamental de la teoría de Galois tendriamos que $ L^H$ la subextensión de $ L^H $ fijada por el grupo $ H $ es tal que $ \text{Gal}(L/L^H) \cong H \cong G  $.
+\end{proof}
+
+\item[$\bullet$] Sea $q(x_{1},...,x_{n}) \in \Q(x_{1},...,x_{n})$ una funci\'on racional en la variables $x_{i}$. Muestre que si $q(x_{1},...,x_{n})$ es invariante bajo cualquier permutaci\'on de las variables $x_{i}$ entonces $q$ se puede escribir como una funci\'on racional en las variables $s_{1},...,s_{n}$ i.e., $q \in  \Q(s_{1},...,s_{n})$ . (De hecho el {\it teorema fundamental de las funciones sim\'etricas} dice que el analogo para polinomios tambi\'en es cierto, en otras palabras $\displaystyle {\rm Stab}_{S_{n}}(\Q[x_{1},...,x_{n}])=\Q[s_{1},...,s_{n}]$).\\
+
+\begin{proof}
+Por lo demostrado anteriormente el hecho que $ q $ sea invariante bajo cualquier permutación significa que $ q \in L^{S_n} $ y esto es precisamente igual a $ K $. Por lo tanto $ q $ debe ser igual a alguna función racional en $ K = \mathbb{Q}(x_1,\cdots,x_n) $.
+\end{proof}
+
+\item[$\bullet$] Sea $p(x_{1},x_{2},x_{3})=x_{1}^2+x_{2}^2+x_{3}^2$. Encuentre $h(s_{1},s_{2},s_{3})$ tal que $p(x_{1},x_{2},x_{3})=h(s_{1},s_{2},s_{3})$.
+
+\begin{proof}
+Tome $ s_1^2 = (x_1+x_2+x_3)^2=x_1^2+2x_1(x_2+x_3)+x_2^2+2x_2x_3+x_3^2 = x_1^2+x_2^2+x_3^2+2(x_1x_2+x_1x_3+x_2x_3) = x_1^2+x_2^2+x_3^2+2s_2$. Entonces vemos que $ x_1^2+x_2^2+x_3^2 = s_1^2-2s_2 $.
+\end{proof}
+\end{itemize}
+
+\item[{\bf 2.}]  Sea $L/F$ una extensi\'on de Galois y sean $K_{1}/F$, $K_{2}/F$ sub-extensiones de Galois de $L/F.$
+
+\begin{itemize}
+
+\item[$\bullet$] Muestre que $K_{1}K_{2}/F$ y $(K_{1} \cap K_{2})/F$ son extensiones de Galois.\\
+\begin{proof}
+Tanto $ K_1K_2/F $ como $ (K_1 \cap K_2)/F $ son extensiones separables pues ambas son subextensiones de la extensión de Galois $ L/F $ que es separable. Entonces cualquier polinomio minimal en $ K_1K_2/F $ o en $ (K_1 \cap K_2)/F $ es un polinomio minimal en $ L/F $ y como aquí es separable se tiene que en los dos primeros también lo es.
+
+Ahora para probar que $ K_1K_2/F $ es normal tenemos que como $ K_1/F $ es el cuerpo de dscomposición de una familia $ A $ de polinomios y $ K_2/F $ es el cuerpo de descomposición de una familia $ B $ de polinomios, entonces $ K_1K_2/F $ es el cuerpo de descomposición de la familia $ A \cup B $, pues contiene todas las raíces de todos los polinomios en $ A \cup B $ y es por definición el mínimo cuerpo que puede contener todas estas raíces. Por otra parte $ K_1 \cap K_2 $ es normal pues si tomamos cualquier polinomio irreducible con una raiz en $ K_1 \cap K_2/F $ entonces por un lado todas sus raíces estan incluidas en $ K_1/F $ pero también todas estan en $ K_2/F $. Por lo tanto, todas las raices estan incluidas en $ (K_1 \cap K_2)/F $.
+\end{proof}
+
+\item[$\bullet$] Considere el homomorfismo \[\begin{array}{cccc }\Psi : & {\rm Gal}(L/F) & \to & {\rm Gal}(K_1/F) \times {\rm Gal}(K_2/F) \\ & \sigma & \mapsto & \left({\rm res}^{L}_{K_{1}}(\sigma),  {\rm res}^{L}_{K_{2}}(\sigma)\right)\end{array}\]
+
+\begin{itemize}
+
+\item[-] Muestre que $\displaystyle {\rm Ker}(\Psi)= {\rm Gal}(L/K_{1}K_{2})$
+
+\begin{proof}
+En la tarea anterior vimos que el kernel de $ \text{res}^L_{K_1}(\sigma) $ son aquellos automorfismos para los que $ K_1 $ es invariante. En este caso el kernel son los automorfismos que dejan fijo tanto a $ K_1 $ como a $ K_2 $ por lo tanto deben dejar fijo a $ K_1K_2 $ que es generado por estos dos campos y es por esta razón que $ Ker(\Psi) = \text{Gal}(L/K_1K_2) $.
+\end{proof}
+
+\item[-] Muestre que $\displaystyle {\rm Im}(\Psi)= {\rm Gal}(K_1/F) \times_{{\rm Gal}\left((K_{1}\cap K_{2})/F\right)} {\rm Gal}(K_2/F)$. (Ac\'a el producto fibrado, ver \'ultima pagina, es con respecto a los homomorfimos ${\rm res}^{K_{1}}_{K_{1} \cap K_{2}}$ y ${\rm res}^{K_{2}}_{K_{1} \cap K_{2}}$ ).\\
+\begin{proof}
+Tome $ \Psi(\sigma) = (\text{res}^L_{K_1}(\sigma),\text{res}^L_{K_2}(\sigma))$. Entonces aplicando los morfismos asociados al grupo fibrado tenemos que $ \text{res}^{K_1}_{K_1\cap K_2}(\text{res}^L_{K_1}(\sigma))= \text{res}^L_{K_1\cap K_2}(\sigma) $ y $ \text{res}^{K_2}_{K_1\cap K_2}(\text{res}^L_{K_2}(\sigma))= \text{res}^L_{K_1\cap K_2}(\sigma) $, como vemos que ambas aplicaciones son iguales concluimos que $ \Psi(\sigma) $ pertenece al producto fibrado.
+
+Ahora para probar que cualquier elemento en el producto fibrado tome dos automorfismos $ \sigma_1 $ y $ \sigma $ de $ K_1 $ y $ K_2 $ tales que restringidos a $ K_1 \cap K_2 $ son iguales. Entonces podemos definir un automorfismo en $ K_1K_2 $ a partir de estos automorfismos como $ \sigma:\mapsto k_1k_2 \to \sigma_1(k_1)\sigma_2{k_2} $ y $k_1+k_2 \mapsto \sigma_1{k_1}+\sigma_{1}{k_1} $. Este automorfismo esta bien definido porque los dos automorfismos coinciden en $ K_1 \cap K_2 $ y finalmente podemos extender este automorfismo $ \sigma $ a un automorfismo $ \sigma' $ de $ L $. Luego tenemos que la imagen de $ \sigma' $ va a ser igual a $ (\sigma_1,\sigma_2) $ por lo que el producto fibrado pertenece a la imagen.
+\end{proof}
+\end{itemize}
+
+\item[$\bullet$] Concluya que  $\displaystyle {\rm Gal}(K_{1}K_{2}/F) \cong {\rm Gal}(K_1/F) \times_{{\rm Gal}\left((K_{1}\cap K_{2})/F\right)} {\rm Gal}(K_2/F)$. Deduzca que en particular si $K_{1}$ y $K_{2}$ son sub-extensiones tales que $K_{1}K_{2}=L$ y $K_{1} \cap K_{2}= F$ se tiene que \[ {\rm Gal}(L/F) \cong  {\rm Gal}(K_1/F) \times {\rm Gal}(K_2/F). \]
+
+\begin{proof}
+Por el primer teorema del isomorfismo de grupos tenemos que 
+$$ \text{Gal}(L/F)/\text{Gal}(L/K_1K_2) \cong {\rm Gal}(K_1/F) \times_{{\rm Gal}\left((K_{1}\cap K_{2})/F\right)} {\rm Gal}(K_2/F)$$.
+
+Entonces por el teorema fundamental de la tería de Galois tenemos que $ \text{Gal}(L/F)/\text{Gal}(L/K_1K_2) \cong \text{Gal}(K_1K_2/F) $, ya que la extensión $ K_1K_2/F $ es normal.
+
+En particular si $ K_1K_2 = L $ y $ K_1 \cap K_2 = F $ entonces tendriamos que
+$$ \text{Gal}(L/F) \cong {\rm Gal}(K_1/F) \times_{{\rm Gal}\left(F/F\right)} {\rm Gal}(K_2/F)$$.
+
+Entonces como $ \text{Gal}(F/F)= \{e\} $ el producto fibrado es igual al producto directo y concluimos que  
+$$ \text{Gal}(L/F) \cong {\rm Gal}(K_1/F) \times {\rm Gal}(K_2/F).$$
+\end{proof}
+
+\item[$\bullet$] Suponga que $\displaystyle [L:F]=[K_{1} : F][K_{2}:F]$ y que m.c.d$\displaystyle ([K_{1} : F],[K_{2} : F])=1$. Muestre que \[ {\rm Gal}(L/F) \cong  {\rm Gal}(K_1/F) \times {\rm Gal}(K_2/F).\]
+
+\begin{proof}
+En el parcial demostramos que si esto ocurre entonces $ L = {K_1}{K_2} $. Además tambien podemos concluir que $ K_1 \cap K_2 = F $ pues claramente $ F \subseteq K_1 \cap K_2 $ y además tenemos por el lema de las torres que $ [K_1:F]=[K_1: K_1 \cap K_2][K_1 \cap K_2:F] $ y $ [K_2:F]=[K_2: K_1 \cap K_2][K_1 \cap K_2:F] $ por lo que $ [K_1 \cap K_2:F] $ divide al máximo común divisor de $ [K_1:F] $ y $ [K_2:F] $, es decir, debe ser igual a 1. Luego, por el punto anterior concluimos que
+$$ \text{Gal}(L/F) \cong {\rm Gal}(K_1/F) \times {\rm Gal}(K_2/F).$$
+\end{proof}
+
+\end{itemize}
+
+\item[{\bf 3.}] Sean $m,n$ enteros positivos tales que m.c.d$(m,n)=1$.
+
+\begin{itemize}
+
+\item[(a)]  Muestre que $\displaystyle \Q(\zeta_{mn}) =\Q(\zeta_{m}) \Q(\zeta_{n})$.\\
+
+\begin{proof}
+Tenemos que $ \Q(\zeta_{m}) $ y $ \Q(\zeta_{n}) $ son subextensiones de $ \Q(\zeta_{mn}) $, pues las $ n $-raíces y $ m $-raices de la unidad estan incluidas en las $ mn $-raices de la unidad. Tenemos que $ \zeta_m = (\zeta_{mn})^n $ y $ \zeta_n= (\zeta_{mn})^m $. Por lo tanto, $ \Q(\zeta_m)\Q(\zeta_n) \subseteq \Q(\zeta_{mn}) $
+Pero además por la identidad de Bezout tenemos que existen enteros $ a,b $ tales que $ 1 =am+bn $ luego $ (\zeta_{n})^a(\zeta_{m})^b = (\zeta_{mn})^{ma+bn}=\zeta_{mn}  $. Esto nos permite concluir que $ \Q(\zeta_{mn}) = \Q(\zeta_{m})\Q(\zeta_{n}) $.
+\end{proof}
+
+\item[(b)]  Deduzca de (a) que $\displaystyle \Q(\zeta_{m}) \cap \Q(\zeta_{n})=\Q$.\\
+
+\begin{proof}
+En el Dummit tenemos la siguiente igualdad que relacione el cuerpo compuesto con la intersección de cuerpos.
+
+Sea $ K/F $ una extensión de Galois y $ F'/F $ una extensión finita. Entonces
+\begin{equation}
+[KF':F]=\frac{[K:F][F':F]}{[K \cap F': F]}.\nonumber
+\end{equation}
+
+En nuestro caso tendriamos que 
+
+\begin{equation}
+[\Q(\zeta_m)\Q(\zeta_n):\Q]=\frac{[\Q(\zeta_m):\Q][\Q(\zeta_n):\Q]}{[\Q(\zeta_m) \cap \Q(\zeta_n):\Q] }\nonumber.
+\end{equation}
+
+Entonces por el punto anterior y por nuestro conocimiento sobre las extensiones ciclotomicas concluimos que
+
+\begin{equation}
+[\Q(\zeta_m) \cap \Q(\zeta_n):\Q] = \frac{\varphi(m)\varphi(n)}{\varphi(mn)}=1\nonumber
+\end{equation}
+
+Esto ultimo porque la función $ \varphi $ de Euler es multiplicativa cuando $ m $ y $ n $ son primos relativos.
+
+Por lo tanto, $ \Q(\zeta_m) \cap \Q(\zeta_n) = \Q $.
+\end{proof}
+
+\item[(c)] Sean $p_{1},...,p_{k}$ primos distintos y sea $N=\prod_{i}p_{i}$. Muestre que \[ {\rm Gal}(\Q(\zeta_{N})/\Q) \cong \Z/(p_{1}-1)\Z \times ... \times \Z/(p_{k}-1)\Z. \]
+
+\begin{proof}
+El literal anterior nos da las hipotesis para poder utilizar el punto anterior. Podemos probar esto por inducción fuerte sobre el número de factores primos de $ N $.
+
+Cuando $ N = p$, entonces tenemos que $ \text{Gal}(\Q(\zeta_p)/\Q) \cong \Z/\varphi(p)\Z=\Z/(p-1)\Z$.
+
+Ahora por inducción tomemos $ N= p_1 \cdots p_{k-1}p_k $. Entonces tenemos por el literal y el punto anterior que $\text{Gal}(\Q(\zeta_N)/\Q)\cong \text{Gal}(\Q(\zeta_{p_1\cdots p_{k-1}})/\Q) \times \text{Gal}(\Q(\zeta_{p_k})/\Q) $. Entonces por hipótesis de inducción $ \text{Gal}(\Q(\zeta_{p_1}\cdots p_{k-1})/\Q) \cong \Z/(p_1-1)\Z \times \cdots \times \Z/(p_{k-1}-1)\Z  $ Luego $ \text{Gal}(\Q(\zeta_N)/\Q)\cong \Z/(p_1-1)\Z \times \cdots \times \Z/(p_{k-1}-1)\Z \times  \Z/(p_{k}-1)\Z $ y esto concluye la demostración.
+\end{proof}
+
+\item[(d)] Sea $G$ un grupo abeliano finito. Muestre que existe $L/\Q$ extensi\'on de Galois tal que $\displaystyle {\rm Gal}(L/\Q)\cong G$.\\
+
+\begin{proof}
+Por el teorema fundamental de los grupos abelianos finitos tenemos que $ G \cong \Z/n_1\Z \times \Z/n_2\Z \times \cdots \Z/n_r\Z \times \cdots \times \Z/n_k\Z$  con $ n_1|n_2|\cdots|n_k $ y $ n_1\cdots n_k = |G| $. En clase vimos que existen infinitos primos que satisfacen la ecuación $ p \equiv 1 \text{ mod }n $ para cualquier $ n>1 $. Luego, podemos elegir por cada $ n_i $ un primo $ p_i $ tal que $ p_i \equiv 1 \text{ mod }n_i $ y tales que los $ p_i$ son diferentes entre sí. Esto significa que $ n_i $ divide a $ p_i-1 $. Luego si tomamos $ \Q(\zeta_{p_i})/\Q $ tenemos que $ \text{Gal}(\Q(\zeta_{p_i})/\Q) \cong \Z/(p_i-1)\Z $. Entonces como vimos en la tarea anterior hay una subextensión $ K_i/\Q $ de $ \Q(\zeta_{p_i})/\Q $ tal que su grupo de Galois es $ \Z/n_i\Z $. Por lo demostrado anteriormente podemos tomar $ \Q(p_1p_2\cdots p_k)/\Q $ y su grupo de Galois es $ \Z/(p_1-1)\Z \times \cdots \times \Z/(p_k-1)\Z $ y por lo tanto $ \Z/n_1\Z \times \cdots \times \Z/(n_k)\Z \cong G $ es normal y tendrá asociada una subextensión $ K/\Q $ cuyo grupo de Galois será $ G $.   
+\end{proof}
+
+\end{itemize}
+
+\item[{\bf 4.}] Sea $p$ un primo.
+
+\begin{itemize}
+
+\item[(a)] Sea $n$ un entero positivo. Muestre existe $\F_{p^{n}}/\F_{p}$ es una extensi\'on de Galois y encuentre un isomorfismo expl\'icito \[{\rm Gal}(\F_{p^{n}}/\F_{p}) \cong \Z/n\Z.\]
+
+\begin{proof}
+En una tarea anterior demostramos que si $ F'/F $ es una extensión finita de un campo finito entonces la extensión es separable. Además la extensión es normal por otro punto en una tarea anterior donde demostramos que $ /F_{p^n} $ era el cuerpo de descomposición del polinomio $ x^{p^n}-x $. Por otra parte, sabemos que $ [\F_{p^n}:\F_p]=n $ por lo que para probar que el grupo de Galois es $ \Z/n\Z $ solo nos falta ver que hay un elemento en el grupo de Galois cuyo orden sea $ n $. Ese elemento es el homomorfismo de Frobenius.
+
+Para probar que su orden es $ n $ observese que $ \F_{p^n}^* \cong \Z/(p^n-1)\Z $ entonces si tomamos cualquier elemento en $ a \in \F_{p^n}^* $ tenemos que $ a^{p^{n}-1} = 1 $. Luego $ a^{p^n} = a $ y como $ 0^{p^n}=0 $ tenemos que $ \text{Frob}_p^n = id $. Pero además el hecho de que en $ \F_{p^n}^* $ hay un elemento de orden $ p^n-1 $ nos dice que $ n $ es el menor número tal que $ \text{Frob}_p^n = id $. 
+
+Esto porque si $ \alpha^k = \alpha $ con $ k<m $ y $ \alpha^m = 1 $ tendriamos que $ \alpha^{m-k}=\alpha^{-1}=\alpha^{m-1} $. Por lo que concluiimos que $ k = 1 $. Así que el orden de Frobenius no puede ser menor a $ n $.
+\end{proof}
+
+\item[(b)] Sean $m,n$ enteros positivos. Muestre que  $\F_{p^{m}}  \subseteq \F_{p^{n}}$ si y s\'olo si $m \mid n$.\\
+
+\begin{proof}
+Tome $ \text{Gal}(\F_{p^m}/F) \cong \Z/m\Z$ y $ \text{Gal}(\F_{p^n}) \cong \Z/n\Z $. Entonces si $\F_{p^{m}}  \subseteq \F_{p^{n}}$ entonces tendriamos que $ \Z/m\Z = \Z/n\Z/H $ para algun subgrupo $ H $ de $ \Z/n $ pero si este subgrupo existe tenemos por el teorema de Lagrange que $ [\Z/n\Z:H]|H|= m|H|=n $, es decir que $ m|n $.
+
+%Para la otra dirección observe que si $ m|n $ entonces $ mk=n $ y por lo tanto, si tomamos el polinomio $ x^{p^n}-x = x^{p^{mk}}-x = x^{p^{k+(m-1)k}}-x = x^{p^{k}p^{(m-1)k}}-x = (x^{p^{k}})^{p^{(m-1)k}}-x $. Pero por el homomorfismo de Frobenius tenemos que $ x = x^{p^m} $, luego $ x^{p^k}-x = x^{p^k}-x^{p^m}= $ 
+
+Para la otra dirección observe que si $ m|n $ entonces $ mk=n $ y por lo tanto, si tomamos el polinomio $ x^{p^n-1}-1 = x^{p^{mk}-1}-1$. Ahora observese que $ p^{mk}-1 $ es divisible por $ p^k-1 $. pues $(p^{k})^m-1^m = (p^k-1)((p^k)^{m-1}-(p^k)^{m-2}+ \cdots (-1)^{m-1}) $. Entonces $ x^{p^n-1}-1 = x^{l(p^k-1)}-1 $ donde $ l = ((p^k)^{m-1}-(p^k)^{m-2}+ \cdots (-1)^{m-1}).$ Pero entonces por la misma razón podemos concluir que $ x^{l(p^k-1)}-1 = (x^{p^k-1})^l-1^l = (x^{p^k-1}-1)((x^{p^k-1})^{l-1}-(x^{p^k-1})^{l-2}+\cdots + (-1)^{l-1}) $ Por lo tanto, el polinomio $ x^{p^n}-x $ es divido por el polinomio $ x^{p^m}-x $. Por lo tanto las raices del primero contienen a las raices del segundo, es decir, $ \F_{p^m} \subseteq \F_{p^n} $.
+
+
+\end{proof}
+\end{itemize}
+
+\item[{\bf 5.}] Sea $p(x) = x^4+2x^3+2x^2+2 \in \Q[x]$.
+
+\begin{itemize}
+
+\item[$\bullet$] Sea $\alpha \in \overline{\Q}$ una raiz de $p(x)$, y sea $K=\Q(\alpha)$. Muestre que $[K:\Q]=4.$\\
+\begin{proof}
+El polinomio $ p(x) $ es irreducible por el criterio de Einsenstein. Luego $ [\Q(\alpha):\Q] $ es igual al grado del polinomio que es cuatro.
+\end{proof}
+\item[$\bullet$] Se puede mostrar que si $L$ es el cuerpo de descomposici\'on de $p(x)$ sobre $K$ entonces $[L:K]=3$. Asumiendo lo anterior muestre que $K/\Q$ no tiene sub-extensiones propias no triviales.\\
+
+\begin{proof}
+Las subextensiones no triviales de $ K/\Q $ deberian ser de grado 2 y debemos demostrar que estas extensiones no existen. Por torres tendriamos que el cuerpo de descomposición de nuestro polinomio es de grado 12. Sea $ M $ una extensión no trivial de $ K $, entonces por torres tendriamos que $ [L:M] = 6 $. Por lo tanto, el enunciado es equivalente a demostrar que $ \text{Gal}\Q $ no tiene subgrupos de orden $ 6 $. Por un teorema tenemos que $ \text{Gal}(L/\Q) \leq A_4 $ si y solo si la raíz del determinante de $ p(x) $ pertenece a $ Q $. El discrimante de este polinomio calculado por Wolfram Alpha es $ 3136=56^2 $. Por lo tanto, $ \text{Gal}(L/\Q) \leq A_4 $ pero como $ |\text{Gal}(L/\Q)| = |A_4|=12 $ concluimos que $ \text{Gal}(L/\Q) \cong A_4 $. Y en la literatura existe una prueba típica de que $ A_4 $ no contiene un subgrupo de orden 6, (suponiendo por contradicción y llegando a la concluisión de que debería contener todos los 3-ciclos que son 8). Por lo tanto, no puede existir una extensión propia no trivial de $ K/\Q $.
+\end{proof}
+
+\end{itemize}
+
+\item[{\bf 6.}] Sea $L/\Q$ una extensi\'on de Galois y suponga que ${\rm Gal}(L/\Q) \cong Q_{8}$ el grupo de Cuaterniones. (Un ejemplo construido a inicios de los 80 de tal extensi\'on es $L=\Q(\alpha)$ donde $\alpha$ es una ra\'iz de $x^8 - 72 x^6 + 180 x^4 - 144 x^2 + 36.$)  
+
+\begin{itemize}
+
+\item[$\bullet$] Muestre que toda sub-extensi\'on $K/\Q$ de $L/\Q$ es de Galois.\\
+\begin{proof}
+Esto se sigue del hecho de que en $ Q_8 $ todos los subgrupos son normales. Recordemos que en $ Q_8 $ los elementos $ i,j $ y $ k $ tienen orden 4. Como el indice de los grupos de orden 4 es 2 todos estos grupos son normales. Además, el único elemento de orden 2 en $ Q_8 $ es -1 y se cumple que $ Z(Q_8)=\{1,-1\} $. Por lo tanto, este único subgrupo de orden 2 es normal en $ Q_8 $ y esto nos indica que no hay más subgrupos propios que considerar. Por lo tanto, como toda sub-extensión tiene asociada un subgrupo normal,todas las sub-extensiones son normales. 
+\end{proof}
+\item[$\bullet$] Suponga que $K/\Q$ es una sub-extensi\'on cuadr\'atica de $L/\Q$. Muestre que $K \subseteq \R$.
+
+\begin{proof}
+Que $ K \subseteq \R $ significa que $ K $ debe ser invariante bajo conjugación. Entonces el enunciado es equivalente a mostrar que $ \phi \in \text{Gal}(L/K). $ donde $ \phi(x)=\overline{x} $. Entonces tenemos dos posibilidades, que $ \phi(x)|_{L} = id $ en cuyo caso claramente pertenece a $ \text{Gal}(L/K) $ porque la identidad siempre pertenece a cualquier grupo de Galois. La segunda posibilidad es que $ \phi(x)|_{L} \not id $ y en este caso tendriamos que este elemento estaria asociado al elemento de orden 2, -1 en $ \Q_8 $. Y si construimos el retículo del grupo ("lattice" en ingles) veriamos que -1 pertenece a todos los subgrupos en $ \Q_8 $, en particular pertenece  a $ \text{Gal}(L/K) $ y esto concluye la demostración.
+\end{proof}
+\end{itemize}
+
+\end{enumerate}
+
+
+
+{\it Productos fibrados de grupos:} Recuerde que dados grupos $G_{1}, G_{2}$ y $G$ y morfismos $\phi_{i} : G_{i} \to G$ el producto fibrado de $G_{1}$ por $G_{2}$ sobre $G$, con respecto a los morfismos $\phi_{i}$, es el subgrupo de $G_{1} \times G_{2}$ definido como \[ G_{1} \times_{G} G_{2}:= \{(g_{1}, g_{2}) \ : \  \phi_{1}(g_{1})= \phi_{2}(g_{2}) \}.\] Por ejemplo si $G=\{e\}$ es el grupo trivial el producto fibrado $G_{1} \times_{\{e\}} G_{2}$ es el producto cartesiano usual.
+
+\end{document}
